@@ -7,7 +7,8 @@ const reducer = (state = initialState, action) => {
         case 'SELECT_COLLEGE':
             return{
                 ...state,
-                schoolName: action.schoolName
+                schoolName: action.schoolName,
+                schoolId:action.schoolId
             }
 
         default:

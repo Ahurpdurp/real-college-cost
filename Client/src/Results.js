@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 
 class Results extends Component{
 
-    onCollegeSelect = (schoolName) => {
-        this.props.onCollegeAddGlobal(schoolName)
+    onCollegeSelect = (schoolName,schoolId) => {
+        this.props.onCollegeAddGlobal(schoolName,schoolId)
     }
     render(){
         return(
@@ -15,7 +15,7 @@ class Results extends Component{
                         <div>
                         <h1>{x['school.name']}</h1>
                         <Link to = '/form'>
-                        <button onClick = {() => this.onCollegeSelect(x['school.name'])}>Select This College</button>
+                        <button onClick = {() => this.onCollegeSelect(x['school.name'], x.id)}>Select This College</button>
                         </Link>
                         </div>
                     )
@@ -28,7 +28,7 @@ class Results extends Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onCollegeAddGlobal: (schoolName) => dispatch({type: 'SELECT_COLLEGE', schoolName:schoolName})
+      onCollegeAddGlobal: (schoolName,schoolId) => dispatch({type: 'SELECT_COLLEGE', schoolId:schoolId, schoolName:schoolName})
     }
   }
 
