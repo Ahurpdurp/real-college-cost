@@ -4,6 +4,7 @@ import './App.css';
 import Search from './Search.js'
 import CollegeForm from './CollegeForm.js'
 import Login from './Login.js'
+import Home from './Home.js'
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
           <Route exact path = '/login' component = {Login}></Route>
           <Route exact path='/' component={Search}/>
           <Route exact path = '/form' component={CollegeForm} />
+          <Route exact path = '/home' component = {Home} />
+          
       </Switch>   
       </BrowserRouter>   
     </div>

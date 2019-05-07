@@ -3,6 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
+const roomAndBoard = require('./roomandboard.json')
 
 const users = [{
     username: 'paul',
@@ -11,6 +12,12 @@ const users = [{
 
 app.use(cors())
 app.use(bodyParser.json())
+
+app.get('/rooming/:id', (req,res) => {
+  let schoolId = req.params.id
+  let school = roomAndBoard.find(x => x.UnitID == schoolId)
+  res.json({roomAndBoard:school.roomAndBoard})
+})
 
 app.post('/login',(req, res) => {
 
