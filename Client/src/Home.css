@@ -1,0 +1,19 @@
+.description p {
+    padding-top:2em;
+    padding-bottom:2em;
+}
+
+.facts .column {
+    width:3em;
+}
+
+.button {
+    width:13em;
+    height:3em;
+    margin-bottom:4em;
+}
+
+.start-button {
+    display:flex;
+    justify-content: center;
+}
