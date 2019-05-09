@@ -6,7 +6,7 @@ When students are thinking about which college to attend, it can be easy to only
 That's where RealCollegeCost comes in. Using this website, students can estimate the cost of their entire college experience, including
 rent, food, textbooks, equipment, monthly subscriptions, even their spotify/netflix fees. Pulling data from college and cost of 
 living apis, this website will do a lot of the estimating automatically, but students are always free to enter in their own custom 
-amounts. 
+amounts. This app is built using primarily react, redux, and node for the backend. Eventually users will be able to login and save their preferences so they don't have to enter in the same data for every college they search up. 
 
 Here's a flow of the website so far. I expect to finish the website late May.
 
