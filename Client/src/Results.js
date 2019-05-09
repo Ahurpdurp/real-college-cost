@@ -1,30 +1,46 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import "./Search.css"
+import Panel from 'react-bulma-components/lib/components/panel';
 
 class Results extends Component{
+
 
     onCollegeSelect = (schoolName,schoolId) => {
         this.props.onCollegeAddGlobal(schoolName,schoolId)
     }
+
+    sortBySchoolName = (a,b) => {
+        let schoolA = a['school.name'].toUpperCase();
+        let schoolB = b['school.name'].toUpperCase();
+        let comparison = 0;
+        if (schoolA > schoolB) {
+            comparison = 1;
+        } else if (schoolA < schoolB) {
+            comparison = -1;
+        }
+        return comparison;
+    }
+
     render(){
         return(
             <div>
-                {this.props.searchResults.map(x => {
+                <Panel style = {{'padding-left':'20%'}}>
+                {this.props.searchResults.sort(this.sortBySchoolName).map(x => {
                     return (
-                        <div>
-                        <h1>{x['school.name']}</h1>
-                        <Link to = '/form'>
-                        <button onClick = {() => this.onCollegeSelect(x['school.name'], x.id)}>Select This College</button>
+                        <Link style = {{'text-decoration':'none'}} to = '/main/2'>
+                        <Panel.Block onClick = {() => this.onCollegeSelect(x['school.name'], x.id)} style = {{'marginTop':'1em','justifyContent':'center','width':'70%'}}>
+                        {x['school.name']}
+                        </Panel.Block>
                         </Link>
-                        </div>
                     )
                 })}
+                </Panel>
             </div>
         )
 }
 }
-
 
 const mapDispatchToProps = (dispatch) => {
     return {

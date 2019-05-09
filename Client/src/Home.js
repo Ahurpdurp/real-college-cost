@@ -9,23 +9,29 @@ import Button from 'react-bulma-components/lib/components/button';
 import './Home.css'
 
 class Home extends Component{
+
+    handleSearchRedirect = () => {
+        this.props.history.push('/main/1');
+    }
+
+
     render(){
         return(
             <div>
-                <div style = {{'borderBottom':'3px solid grey','justifyContent':'center','display':'flex','marginLeft':'auto','marginRight':'auto'}}>
-                    <img style = {{'padding-top':'2em','padding-bottom':'2em','height':'50%','width':'50%'}} src = {titleicon} alt = 'awefaefw'/>
+                <div style = {{'borderBottom':'3px solid rgb(82, 82, 82);','justifyContent':'center','display':'flex','marginLeft':'auto','marginRight':'auto'}}>
+                    <img style = {{'paddingTop':'2em','paddingBottom':'2em','height':'50%','width':'50%'}} src = {titleicon} alt = 'awefaefw'/>
                 </div>
         <Hero color="primary" gradient>
             <Hero.Body>
                 <Container>
-                <Heading style = {{'textAlign':'center','paddingBottom':'1em'}}size = {1}>RealCollegeCost</Heading>
-                <Heading style = {{'textAlign':'center'}} subtitle size={4}>
+                <Heading style = {{'textAlign':'center'}}size = {1}>RealCollegeCost</Heading>
+                <Heading style = {{'paddingTop':'3em','textAlign':'center'}} subtitle size={4}>
                     College's expensive, and tuition isn't the whole picture. 
                 </Heading>
                 </Container>
             </Hero.Body>
         </Hero>
-        <Content className = 'description' style = {{'backgroundColor':'#E8E8E8'}}>
+        <Content className = 'description' >
             <p>
                 When you're thinking about which college to go to, one thing to always think about is money, because this world 
                 is run by bullshit fucking rich bastards. Unfortunately, while tuition is the bulk of the cost, there are many other things
@@ -34,26 +40,34 @@ class Home extends Component{
             </p>
         </Content>
         <Columns className = 'facts'>
-            <Columns.Column>
-            <Heading style = {{'text-align':'center','padding-bottom':'1em'}}subtitle size={4}>
-                Get the latest college info from over 7,000 colleges.
+            <Columns.Column className = 'facts-box'>
+            <Heading style = {{'textAlign':'center'}} size={4}>
+                1) Select Your College
+            </Heading>
+            <Heading style = {{'textAlign':'center','paddingBottom':'1em'}}subtitle size={4}>
+                Choose from over 7,000 U.S. colleges, all full of the latest info
             </Heading>
             </Columns.Column>
-            <Columns.Column>
-            <Heading style = {{'text-align':'center','padding-bottom':'1em'}}subtitle size={4}>
-                Add costs from preset options such as textbooks, drugs, and gas money - but also add your own special costs 
-                wherever you'd like.
+            <Columns.Column className = 'facts-box'>
+            <Heading style = {{'textAlign':'center'}} size={4}>
+                2) Choose Your Preferences
+            </Heading>
+            <Heading style = {{'textAlign':'center','paddingBottom':'1em'}}subtitle size={4}>
+                Account for costs from over 20 categories, including rent, textbooks, food, etc
             </Heading>
             </Columns.Column>
-            <Columns.Column>
-                <Heading style = {{'text-align':'center'}} subtitle size={4}>
-                    100% free - create an account to save your preferences and compare more college costs at a time. 
-                </Heading>
+            <Columns.Column className = 'facts-box'>
+            <Heading style = {{'textAlign':'center'}} size={4}>
+                3) Calculate Your Final Cost
+            </Heading>
+            <Heading style = {{'textAlign':'center','paddingBottom':'1em'}}subtitle size={4}>
+                Get the most accurate estimate, save your results, and compare your dream colleges
+            </Heading>
             </Columns.Column>
         </Columns> 
         <div className = 'start-button'>
-        <Button>
-            Click here to get started
+        <Button onClick = {this.handleSearchRedirect}>
+            GET STARTED →
          </Button> 
         </div>
       

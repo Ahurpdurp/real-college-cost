@@ -1,0 +1,28 @@
+.Pagination {
+    position: absolute;
+    bottom:-400px;
+    display:flex;
+    justify-content: center;
+}
+
+.header{
+    text-align: center;
+}
+
+.input-container{
+    display:flex;
+    justify-content: center;
+}
+
+.Pagination ul {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.Pagination li {
+    list-style-type: none;
+}
+
+.panel-block {
+    justify-content: center;
+}

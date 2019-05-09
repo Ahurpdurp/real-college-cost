@@ -10,7 +10,11 @@ const reducer = (state = initialState, action) => {
                 schoolName: action.schoolName,
                 schoolId:action.schoolId
             }
-
+        case 'ADD_TOTAL':
+            return{
+                ...state,
+                total:action.total
+            }
         default:
             return{
                 ...state
