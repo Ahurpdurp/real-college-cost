@@ -5,7 +5,7 @@ import 'react-bulma-components/lib/components/form';
 import Heading from 'react-bulma-components/lib/components/heading';
 import './Main.css'
 import Tuition from './Tuition.js'
-import Room from './Room.js'
+import RoomAndBoard from './RoomAndBoard.js'
 
 class Main extends Component{
     render(){
@@ -14,9 +14,9 @@ class Main extends Component{
             <Heading className = 'header'>RealCollegeCost</Heading>
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/main/1' component={Search}/>
-                    <Route exact path = '/main/2' component = {Tuition} />
-                    <Route exact path = './main/3' component = {Room} />
+                    <Route exact path ='/main/1' component={Search}/>
+                    <Route exact path ='/main/2' component = {Tuition} />
+                    <Route exact path ='/main/3' component = {RoomAndBoard} />
                 </Switch>   
             </BrowserRouter>   
         </div>

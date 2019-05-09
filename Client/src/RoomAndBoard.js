@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 
-class Room extends Component {
+class RoomAndBoard extends Component {
     render(){
         return(
-            <div>{this.props.total} HIHIs</div>
+            <div>{this.props.total}</div>
         )
     }
 }
@@ -15,4 +15,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Room)
+export default connect(mapStateToProps)(RoomAndBoard)
