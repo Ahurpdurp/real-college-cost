@@ -1,5 +1,6 @@
 const initialState = {
-    schoolName: ''
+    schoolName: '',
+    total:0
 }
 
 const reducer = (state = initialState, action) => {
@@ -10,16 +11,18 @@ const reducer = (state = initialState, action) => {
                 schoolName: action.schoolName,
                 schoolId:action.schoolId
             }
-        case 'ADD_TOTAL':
+        case 'ADD_TUITION_TOTAL':
             return{
                 ...state,
-                total:action.total
+                tuitionTotal:action.tuitionTotal,
+                total:action.tuitionTotal
             }
         default:
             return{
                 ...state
             }
     }
+
 }
 
 export default reducer

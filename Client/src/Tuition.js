@@ -54,8 +54,8 @@ class Tuition extends Component {
     }
 
     onEstimateTotal = () => {
-        let total = this.state.parentIncome
-        this.props.onAddTotal(total)
+        let tuitionTotal = this.state.parentIncome
+        this.props.onAddTotal(tuitionTotal)
         this.props.history.push('/main/3');
     }
     
@@ -115,7 +115,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onAddTotal: (total) => dispatch({type: 'ADD_TOTAL', total:total})
+      onAddTotal: (tuitionTotal) => dispatch({type: 'ADD_TUITION_TOTAL', tuitionTotal:tuitionTotal})
     }
   }
 

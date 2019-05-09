@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {BrowserRouter, Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 import Search from './Search.js'
 import 'react-bulma-components/lib/components/form';
 import Heading from 'react-bulma-components/lib/components/heading';
@@ -12,6 +13,7 @@ class Main extends Component{
         return(
         <div className = 'body-container'>
             <Heading className = 'header'>RealCollegeCost</Heading>
+            <Heading style = {{'text-align':'center'}}subtitle>Current Total: {this.props.total}</Heading>
             <BrowserRouter>
                 <Switch>
                     <Route exact path ='/main/1' component={Search}/>
@@ -24,4 +26,10 @@ class Main extends Component{
     }
 }
 
-export default Main
+const mapStateToProps = (state) => {
+    return {
+        total: state.total
+    }
+}
+
+export default connect(mapStateToProps)(Main)
