@@ -19,7 +19,7 @@ Search for your college (this uses a college api of over 7,200 colleges).
 ![alt text](https://raw.githubusercontent.com/Ahurpdurp/real-college-cost/master/Client/src/images/Page2.png)
 
 The next step is to calculate the tuition based off of the parents' income (since this determines financial aid). 
-As estimate is given based off the most recent data, which the student is also welcome to change. 
+An estimate is given based off the most recent data, which the student is also welcome to change. 
 
 ![alt text](https://raw.githubusercontent.com/Ahurpdurp/real-college-cost/master/Client/src/images/Page3.png)
 
