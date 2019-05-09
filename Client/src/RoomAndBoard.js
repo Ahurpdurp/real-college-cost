@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import Heading from 'react-bulma-components/lib/components/heading';
+import 'react-bulma-components/lib/components/form';
+import Button from 'react-bulma-components/lib/components/button';
 
 class RoomAndBoard extends Component {
     constructor(){
         super()
         this.state = {
-            city:''
+            city:'',
+            roomAndBoard:''
         }
     }
 
@@ -21,6 +24,26 @@ class RoomAndBoard extends Component {
                 city:results.results[0]['school.city']
             })
         })
+
+        fetch("http://localhost:8080/rooming/" + this.props.schoolId)
+        .then(response => response.json())
+        .then(results => {
+            this.setState({
+                roomAndBoard:results.roomAndBoard
+            })
+        })
+    }
+
+    handleTextChange = (e) => {
+        this.setState({
+            roomAndBoard:e.target.value
+        })
+    } 
+
+    onEstimateTotal = () => {
+        let roomingTotal = parseInt(this.state.roomAndBoard)
+        this.props.onAddTotal(roomingTotal)
+        this.props.history.push('/main/4');
     }
 
     render(){
@@ -30,14 +53,13 @@ class RoomAndBoard extends Component {
                     Now that we got tuition of the way, let's look at living expenses. Most likely, the first year you'll live on campus. If you do, we may 
                     have an estimate for you already. If you want to live off campus in an apartment, that's fine too. Just put in your own estimates.
                 </Heading>
-                <h1>You're going to be in {this.state.city}...let's calculate some living expenses now</h1>
-                <p>Do you want to live on campus?
-                    <input onClick = {(event) => this.onClickRoomAndBoard(event)} type = 'checkbox'></input>
-                    <input disabled = {this.state.onCampusInputBox} value = {this.state.roomAndBoard}/>
-                </p>
-                <p>If not, enter in your own apartment rent for 9 months (or if you feel the given on-campus estimate is inaccurate) 
-                    <input onChange = {(event) => this.handleOffCampusHousing(event)} disabled = {!this.state.onCampusInputBox}/>
-                </p>
+                <Heading subtitle>You're going to be in {this.state.city}...let's calculate some living expenses now. If you see something 
+                already filled out below, that's our best estimate based on preexisting data for <b>on campus housing.</b>. If it's blank or you know you want to live 
+                off campus (most people don't, at least for the first year), fill out your own estimate. Remember, we're calculating your costs for <u>one year!</u></Heading>
+                <input className = 'input' value = {this.state.roomAndBoard} onChange = {(event) => this.handleTextChange(event)}></input>
+                <Button onClick = {this.onEstimateTotal}>
+                    Next
+                </Button>
             </div>
         )
     }
@@ -50,4 +72,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(RoomAndBoard)
+const mapDispatchToProps = (dispatch) => {
+    return {
+      onAddTotal: (roomingTotal) => dispatch({type: 'ADD_ROOMING_TOTAL', roomingTotal:roomingTotal})
+    }
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(RoomAndBoard)

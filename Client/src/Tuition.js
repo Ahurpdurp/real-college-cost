@@ -54,7 +54,7 @@ class Tuition extends Component {
     }
 
     onEstimateTotal = () => {
-        let tuitionTotal = this.state.parentIncome
+        let tuitionTotal = parseInt(this.state.parentIncome)
         this.props.onAddTotal(tuitionTotal)
         this.props.history.push('/main/3');
     }
@@ -87,11 +87,13 @@ class Tuition extends Component {
                     </Button>
                 </div>
                 {this.state.parentIncome === null ? <h1>No estimate available :(</h1> : 
-                this.state.parentIncome === '' ? <h1>Click one of the buttons above for an estiamte!</h1> : 
+                this.state.parentIncome === '' ? <h1>Click one of the buttons above for an estimate!</h1> : 
                 <h1>Your estimate is shown below ↓</h1>}
                 <Notification color='danger'>
                     If you're okay with the number below, go to the next page. If have your own tuition cost
-                    in mind, or if a result wasn't returned, go ahead and add your own estimate. 
+                    in mind, or if a result wasn't returned, go ahead and add your own estimate. If you know you're taking 
+                    out a loan or your parents are helping out, adjust accordingly. Remember, we're going trying to estimate the
+                    <b>yearly</b> cost of college because it's easier to estimate this way. 
                 </Notification>
                 <div className = 'tuition-box'>
                     <input onChange = {(event) => {this.onCustomTuition(event)}}value = {this.state.parentIncome} placeholder = 'Tuition cost...' className = 'input'></input>

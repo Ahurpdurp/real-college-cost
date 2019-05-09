@@ -7,6 +7,8 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import './Main.css'
 import Tuition from './Tuition.js'
 import RoomAndBoard from './RoomAndBoard.js'
+import Textbooks from './Textbooks.js'
+import Monthly from './Monthly.js'
 
 class Main extends Component{
     render(){
@@ -19,6 +21,8 @@ class Main extends Component{
                     <Route exact path ='/main/1' component={Search}/>
                     <Route exact path ='/main/2' component = {Tuition} />
                     <Route exact path ='/main/3' component = {RoomAndBoard} />
+                    <Route exact path = '/main/4' component = {Textbooks} />
+                    <Route exact path = '/main/5' component = {Monthly} />
                 </Switch>   
             </BrowserRouter>   
         </div>
