@@ -11,7 +11,7 @@ import './Home.css'
 class Home extends Component{
 
     handleSearchRedirect = () => {
-        this.props.history.push('/main/1');
+        this.props.history.push('/main');
     }
 
 

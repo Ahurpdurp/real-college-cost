@@ -9,8 +9,10 @@ class Monthly extends Component {
     constructor(){
         super()
         this.state = {
-            textbookCost:1200,
-            laptopCost:0
+            foodCost:3000,
+            phoneCost:600,
+            internetCost:360,
+            restaurantCost:1000
         }
     }
 
@@ -21,10 +23,12 @@ class Monthly extends Component {
     }
 
     onEstimateTotal = () => {
-        let textbookTotal = parseInt(this.state.textbookCost)
-        let laptopTotal = parseInt(this.state.laptopCost)
-        this.props.onAddTotal(textbookTotal,laptopTotal)
-        this.props.history.push('/main/5');
+        let foodTotal = parseInt(this.state.foodCost)
+        let restaurantTotal = parseInt(this.state.restaurantCost)
+        let phoneTotal = parseInt(this.state.phoneCost)
+        let internetTotal = parseInt(this.state.internetCost)
+        this.props.onAddTotal(foodTotal,restaurantTotal,phoneTotal,internetTotal)
+        this.props.history.push('/main/6');
     } 
 
     render(){
@@ -34,12 +38,22 @@ class Monthly extends Component {
                     Time to take care of some monthly costs. We've taken care of the big picture stuff, but those pesky small things
                     like your Spotify bill can really add up. But hey, this'll help you map it out and be prepared. 
                 </Heading>
-                <Heading subtitle size = {5}>Enter your food costs below. The easiest way to do this is to estimate your food costs per month,
+                <Heading subtitle size = {5}>Enter your grocery costs below. The easiest way to do this is to estimate your food costs per month,
                 and multiply by 12 for the whole year. On average, you'll spend around $250 a month on food. That's $3,000 a year. If you're living on campus, you'll have a meal plan, which our estimate already took care of. 
-                But, if you're going that route, you still have to pay for summer food, which will be 250 x 3 = $750, unless you're going to live at home.</Heading>
-                <input className = 'input' value = {this.state.textbookCost} onChange = {(event) => this.handleTextChange(event, "textbookCost")}></input>
-                <Heading subtitle size = {5}>Estimated Laptop Cost: </Heading>
-                <input className = 'input' value = {this.state.laptopCost} onChange = {(event) => this.handleTextChange(event, "laptopCost")}></input>
+                But, if you're going that route, you still have to pay for summer food, which will be 250 x 3 = $750, unless you're going to live at home. Only worry about groceries for now,
+                 there's a section later for eating out. </Heading>
+                <input className = 'input' value = {this.state.foodCost} onChange = {(event) => this.handleTextChange(event, "foodCost")}></input>
+                <Heading subtitle size = {5}>How often are you going to eat out? The easiest way to thing about it is on a per-week basis. As someone who's already done the whole college thing, 
+                once a week pretty normal. That's the estimate given below.</Heading>
+                <input className = 'input' value = {this.state.restaurantCost} onChange = {(event) => this.handleTextChange(event, "restaurantCost")}></input>
+                <Heading subtitle size = {5}>Next, let's look at some bills. There's no easy way to do this but to list all the common 
+                bills for college students, so let's get to business. Remember, we're doing it by the year, so if you're living on campus, then some of these
+                you only need to worry about the summer. If don't need to pay for this, change the number to 0. </Heading>
+                <Heading subtitle size = {5}>Phone bill. On average, 50/month, so 600/year.</Heading>
+                <input className = 'input' value = {this.state.phoneCost} onChange = {(event) => this.handleTextChange(event, "phoneCost")}></input>
+                <Heading subtitle size = {5}>Internet bill. On average, it's about 60/month. If you have roommates, you'll split the bill, but you'll probably need a stronger 
+                plan. 30/month or 360/year is a safe estimate. </Heading>
+                <input className = 'input' value = {this.state.internetCost} onChange = {(event) => this.handleTextChange(event, "internetCost")}></input>
                 <Button onClick = {this.onEstimateTotal}>
                     Next
                 </Button>
@@ -57,7 +71,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onAddTotal: (textbookTotal,laptopTotal) => dispatch({type: 'ADD_TEXTBOOK_TOTAL', textbookTotal:textbookTotal,laptopTotal:laptopTotal})
+      onAddTotal: (foodTotal,restaurantTotal,phoneTotal,internetTotal) => dispatch({type: 'ADD_MONTHLY_TOTAL', foodTotal:foodTotal,restaurantTotal:restaurantTotal,phoneTotal:phoneTotal,internetTotal:internetTotal})
     }
   }
 

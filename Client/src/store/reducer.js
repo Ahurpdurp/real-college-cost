@@ -4,7 +4,19 @@ const initialState = {
     tuitionTotal:0,
     roomingTotal:0,
     textbookTotal:0,
-    laptopTotal:0
+    laptopTotal:0,
+    foodTotal:0,
+    restaurantTotal:0,
+    phoneTotal:0,
+    internetTotal:0,
+    spotifyTotal:0,
+    amazonPrimeTotal:0,
+    netflixTotal:0,
+    drinkTotal:0,
+    alcoholTotal:0,
+    clubTotal:0,
+    clothingTotal:0,
+    customTotal:0
 }
 
 const reducer = (state = initialState, action) => {
@@ -33,6 +45,33 @@ const reducer = (state = initialState, action) => {
                 textbookTotal:action.textbookTotal,
                 laptopTotal:action.laptopTotal,
                 total:state.tuitionTotal + state.roomingTotal + action.textbookTotal + action.laptopTotal
+            }
+        case 'ADD_MONTHLY_TOTAL':
+            return{
+                ...state,
+                foodTotal:action.foodTotal,
+                phoneTotal:action.phoneTotal,
+                internetTotal:action.internetTotal,
+                total:state.tuitionTotal + state.roomingTotal + state.textbookTotal + state.laptopTotal + action.foodTotal + action.restaurantTotal + action.phoneTotal + action.internetTotal
+            }
+        case 'ADD_SUBSCRIPTIONS_TOTAL':
+            return{
+                ...state,
+                spotifyTotal:action.spotifyTotal,
+                amazonPrimeTotal:action.amazonPrimeTotal,
+                netflixTotal:action.netflixTotal,
+                total:state.tuitionTotal + state.roomingTotal + state.textbookTotal + state.laptopTotal + state.foodTotal +  state.restaurantTotal + state.phoneTotal + state.internetTotal + action.spotifyTotal + action.amazonPrimeTotal + action.netflixTotal
+            }
+        case 'ADD_MISC_TOTAL':
+            return{
+                ...state,
+                drinkTotal:action.drinkTotal,
+                alcoholTotal:action.alcoholTotal,
+                clubTotal:action.clubTotal,
+                clothingTotal:action.clothingTotal,
+                customTotal:action.customTotal,
+                total:state.tuitionTotal + state.roomingTotal + state.textbookTotal + state.laptopTotal + state.foodTotal +  state.restaurantTotal + state.phoneTotal + state.internetTotal + state.spotifyTotal + state.amazonPrimeTotal + state.netflixTotal
+                + action.drinkTotal + action.alcoholTotal + action.clubTotal + action.clothingTotal + action.customTotal
             }
         default:
             return{
