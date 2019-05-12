@@ -6,6 +6,7 @@ import Button from 'react-bulma-components/lib/components/button';
 import './Tuition.css'
 import Notification from 'react-bulma-components/lib/components/notification';
 import 'react-bulma-components/lib/components/form';
+import TitleHeader from './Header.js'
 
 class Tuition extends Component {
     constructor(){
@@ -19,6 +20,7 @@ class Tuition extends Component {
     }
 
     componentDidMount(){
+        window.scrollTo(0, 0)
         let baseUrl = "https://api.data.gov/ed/collegescorecard/v1/schools?"
         let apiKey = "S0RreVIMaoUJRJiIb9vLSTqiouUFP0KwjX5OCdwa"
         let URL = `${baseUrl}id=${this.props.schoolId}&api_key=${apiKey}&&_fields=latest.cost.tuition.out_of_state`
@@ -62,6 +64,7 @@ class Tuition extends Component {
     render(){
         return(
             <div>
+                <TitleHeader />
                 <Heading className = 'header'>
                     Now we have to figure out how much tuition you actually need to pay for {this.props.schoolName}.
                     Without aid, the tuition is ${this.state.baseTuition}. But chances are, you don't have to pay that much.

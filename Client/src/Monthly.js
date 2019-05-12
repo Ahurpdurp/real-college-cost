@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Heading from 'react-bulma-components/lib/components/heading';
 import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
+import TitleHeader from './Header.js'
 
 
 class Monthly extends Component {
@@ -14,6 +15,10 @@ class Monthly extends Component {
             internetCost:360,
             restaurantCost:1000
         }
+    }
+
+    componentDidMount(){
+        window.scrollTo(0, 0)
     }
 
     handleTextChange = (e,typeCost) => {
@@ -34,6 +39,7 @@ class Monthly extends Component {
     render(){
         return(
             <div>
+                <TitleHeader />
                 <Heading subtitle>
                     Time to take care of some monthly costs. We've taken care of the big picture stuff, but those pesky small things
                     like your Spotify bill can really add up. But hey, this'll help you map it out and be prepared. 

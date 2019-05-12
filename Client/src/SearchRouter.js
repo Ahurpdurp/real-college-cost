@@ -11,13 +11,13 @@ import Monthly from './Monthly.js'
 import Subscriptions from './Subscriptions.js'
 import Misc from './Misc.js'
 import TitleHeader from './Header.js'
-
+import TotalCost from './TotalCost.js'
 class Main extends Component{
     render(){
         return(
         <div className = 'body-container'>
             <BrowserRouter>
-            <TitleHeader />
+
                 <Switch>
                     <Route exact path = {this.props.match.path} component={Search}/>
                     <Route exact path = {`${this.props.match.path}/2`} component = {Tuition} />
@@ -26,6 +26,7 @@ class Main extends Component{
                     <Route exact path = {`${this.props.match.path}/5`} component = {Monthly} />
                     <Route exact path = {`${this.props.match.path}/6`} component = {Subscriptions} />
                     <Route exact path = {`${this.props.match.path}/7`} component = {Misc} />
+                    <Route exact path = '/main/total' component = {TotalCost} />
                 </Switch>   
             </BrowserRouter>   
         </div>

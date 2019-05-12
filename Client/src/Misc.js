@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Heading from 'react-bulma-components/lib/components/heading';
 import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
+import TitleHeader from './Header.js'
 
 
 class Misc extends Component {
@@ -31,12 +32,13 @@ class Misc extends Component {
         let clothingTotal = parseInt(this.state.clothingCost)
         let customTotal = parseInt(this.state.customCost)
         this.props.onAddTotal(drinkTotal,alcoholTotal,clubTotal,clothingTotal,customTotal)
-        this.props.history.push('/main/5');
+        this.props.history.push('/main/total');
     } 
 
     render(){
         return(
             <div>
+                <TitleHeader />
                 <Heading subtitle>
                     If you're getting exhausted/about to have a panic attack as the inevitable force of cripping debt overwhelms you, <b>don't worry.</b> We're on the last page. Here we're just going to 
                     enter in some miscellaneous stuff and then you'll be on your merry way. These costs highly variable though, so for the most part you'll have to fill in your own estimates (you're probably wondering

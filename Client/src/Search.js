@@ -3,7 +3,7 @@ import Results from './Results.js'
 import 'react-bulma-components/lib/components/form';
 import Heading from 'react-bulma-components/lib/components/heading';
 import './Search.css'
-
+import TitleHeader from './Header.js'
 class Search extends Component {
     constructor(){
         super()
@@ -13,7 +13,10 @@ class Search extends Component {
         }
     }
 
-
+    componentDidMount(){
+        window.scrollTo(0, 0)
+    }
+    
     onSearchChange = (e) => {
         let baseUrl = "https://api.data.gov/ed/collegescorecard/v1/schools?"
         let apiKey = "S0RreVIMaoUJRJiIb9vLSTqiouUFP0KwjX5OCdwa"
@@ -41,6 +44,7 @@ class Search extends Component {
     render(){
         return(
             <div>
+                <TitleHeader />
                 <Heading className = 'header'>
                     The first step is selecting a college. Let's get that out of the way. 
                 </Heading>

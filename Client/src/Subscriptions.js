@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Heading from 'react-bulma-components/lib/components/heading';
 import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
+import TitleHeader from './Header.js'
 
 
 class Subscriptions extends Component {
@@ -15,6 +16,10 @@ class Subscriptions extends Component {
         }
     }
 
+    componentDidMount(){
+        window.scrollTo(0, 0)
+    }
+    
     handleTextChange = (e,typeCost) => {
         this.setState({
             [typeCost]:e.target.value
@@ -32,6 +37,7 @@ class Subscriptions extends Component {
     render(){
         return(
             <div>
+                <TitleHeader />
                 <Heading>Subscription Time! For any of these, if you don't want it or you have a shared plan, change the number accordingly.</Heading>
                 <Heading subtitle size = {5}>Amazon Prime. This will save your ass countless times. Plus, with the student discount, it's only $59/year and you get free streaming. 
                 If you're going to get it, just get it for the year.</Heading>
