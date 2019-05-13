@@ -7,13 +7,14 @@ import './Tuition.css'
 import Notification from 'react-bulma-components/lib/components/notification';
 import 'react-bulma-components/lib/components/form';
 import TitleHeader from './Header.js'
+import InputNumber from 'react-input-just-numbers';
 
 class Tuition extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             tuitionButton:'',
-            parentIncome:'',
+            parentIncome:this.props.tuitionTotal,
             reuslts:[],
             baseTuition:''
         }
@@ -99,7 +100,7 @@ class Tuition extends Component {
                     <b>yearly</b> cost of college because it's easier to estimate this way. 
                 </Notification>
                 <div className = 'tuition-box'>
-                    <input onChange = {(event) => {this.onCustomTuition(event)}}value = {this.state.parentIncome} placeholder = 'Tuition cost...' className = 'input'></input>
+                    <InputNumber onChange = {(event) => {this.onCustomTuition(event)}} value = {this.state.parentIncome} placeholder = 'Tuition cost...' className = 'input'></InputNumber>
                 </div>
                 <Button onClick = {this.onEstimateTotal}>
                     Next
@@ -114,7 +115,8 @@ class Tuition extends Component {
 const mapStateToProps = (state) => {
     return {
         schoolName: state.schoolName,
-        schoolId:state.schoolId
+        schoolId:state.schoolId,
+        tuitionTotal:state.tuitionTotal
     }
 }
 

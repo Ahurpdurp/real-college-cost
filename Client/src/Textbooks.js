@@ -4,14 +4,14 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
 import TitleHeader from './Header.js'
-
+import InputNumber from 'react-input-just-numbers';
 
 class Textbooks extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
-            textbookCost:1200,
-            laptopCost:0
+            textbookCost:this.props.textbookTotal,
+            laptopCost:this.props.laptopTotal
         }
     }
 
@@ -44,9 +44,9 @@ class Textbooks extends Component {
                     As for laptops, chances are you probably already have one. If you do, leave the number at 0.
                 </Heading>
                 <Heading subtitle size = {5}>Estimated Textbook Cost: </Heading>
-                <input className = 'input' value = {this.state.textbookCost} onChange = {(event) => this.handleTextChange(event, "textbookCost")}></input>
+                <InputNumber className = 'input' value = {this.state.textbookCost} onChange = {(event) => this.handleTextChange(event, "textbookCost")}></InputNumber>
                 <Heading subtitle size = {5}>Estimated Laptop Cost: </Heading>
-                <input className = 'input' value = {this.state.laptopCost} onChange = {(event) => this.handleTextChange(event, "laptopCost")}></input>
+                <InputNumber className = 'input' value = {this.state.laptopCost} onChange = {(event) => this.handleTextChange(event, "laptopCost")}></InputNumber>
                 <Button onClick = {this.onEstimateTotal}>
                     Next
                 </Button>
@@ -58,7 +58,9 @@ class Textbooks extends Component {
 const mapStateToProps = (state) => {
     return {
         total: state.total,
-        schoolId:state.schoolId
+        schoolId:state.schoolId,
+        textbookTotal:state.textbookTotal,
+        laptopTotal:state.laptopTotal
     }
 }
 

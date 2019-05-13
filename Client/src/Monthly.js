@@ -4,16 +4,18 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
 import TitleHeader from './Header.js'
+import InputNumber from 'react-input-just-numbers';
+import { Input } from 'react-bulma-components/lib/components/form';
 
 
 class Monthly extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
-            foodCost:3000,
-            phoneCost:600,
-            internetCost:360,
-            restaurantCost:1000
+            foodCost:this.props.foodTotal,
+            phoneCost:this.props.phoneTotal,
+            internetCost:this.props.internetTotal,
+            restaurantCost:this.props.restaurantTotal
         }
     }
 
@@ -48,18 +50,18 @@ class Monthly extends Component {
                 and multiply by 12 for the whole year. On average, you'll spend around $250 a month on food. That's $3,000 a year. If you're living on campus, you'll have a meal plan, which our estimate already took care of. 
                 But, if you're going that route, you still have to pay for summer food, which will be 250 x 3 = $750, unless you're going to live at home. Only worry about groceries for now,
                  there's a section later for eating out. </Heading>
-                <input className = 'input' value = {this.state.foodCost} onChange = {(event) => this.handleTextChange(event, "foodCost")}></input>
+                <InputNumber className = 'input' value = {this.state.foodCost} onChange = {(event) => this.handleTextChange(event, "foodCost")}></InputNumber>
                 <Heading subtitle size = {5}>How often are you going to eat out? The easiest way to thing about it is on a per-week basis. As someone who's already done the whole college thing, 
                 once a week pretty normal. That's the estimate given below.</Heading>
-                <input className = 'input' value = {this.state.restaurantCost} onChange = {(event) => this.handleTextChange(event, "restaurantCost")}></input>
+                <InputNumber className = 'input' value = {this.state.restaurantCost} onChange = {(event) => this.handleTextChange(event, "restaurantCost")}></InputNumber>
                 <Heading subtitle size = {5}>Next, let's look at some bills. There's no easy way to do this but to list all the common 
                 bills for college students, so let's get to business. Remember, we're doing it by the year, so if you're living on campus, then some of these
                 you only need to worry about the summer. If don't need to pay for this, change the number to 0. </Heading>
                 <Heading subtitle size = {5}>Phone bill. On average, 50/month, so 600/year.</Heading>
-                <input className = 'input' value = {this.state.phoneCost} onChange = {(event) => this.handleTextChange(event, "phoneCost")}></input>
+                <InputNumber className = 'input' value = {this.state.phoneCost} onChange = {(event) => this.handleTextChange(event, "phoneCost")}></InputNumber>
                 <Heading subtitle size = {5}>Internet bill. On average, it's about 60/month. If you have roommates, you'll split the bill, but you'll probably need a stronger 
                 plan. 30/month or 360/year is a safe estimate. </Heading>
-                <input className = 'input' value = {this.state.internetCost} onChange = {(event) => this.handleTextChange(event, "internetCost")}></input>
+                <InputNumber className = 'input' value = {this.state.internetCost} onChange = {(event) => this.handleTextChange(event, "internetCost")}></InputNumber>
                 <Button onClick = {this.onEstimateTotal}>
                     Next
                 </Button>
@@ -71,7 +73,11 @@ class Monthly extends Component {
 const mapStateToProps = (state) => {
     return {
         total: state.total,
-        schoolId:state.schoolId
+        schoolId:state.schoolId,
+        foodTotal:state.foodTotal,
+        restaurantTotal:state.restaurantTotal,
+        phoneTotal:state.phoneTotal,
+        internetTotal:state.internetTotal,
     }
 }
 

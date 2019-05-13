@@ -4,14 +4,15 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
 import TitleHeader from './Header.js'
+import InputNumber from 'react-input-just-numbers';
 
 
 class RoomAndBoard extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             city:'',
-            roomAndBoard:''
+            roomAndBoard:this.props.roomingTotal
         }
     }
 
@@ -60,7 +61,7 @@ class RoomAndBoard extends Component {
                 <Heading subtitle>You're going to be in {this.state.city}...let's calculate some living expenses now. If you see something 
                 already filled out below, that's our best estimate based on preexisting data for <b>on campus housing.</b>. If it's blank or you know you want to live 
                 off campus (most people don't, at least for the first year), fill out your own estimate. Remember, we're calculating your costs for <u>one year!</u></Heading>
-                <input className = 'input' value = {this.state.roomAndBoard} onChange = {(event) => this.handleTextChange(event)}></input>
+                <InputNumber className = 'input' value = {this.state.roomAndBoard} onChange = {(event) => this.handleTextChange(event)}></InputNumber>
                 <Button onClick = {this.onEstimateTotal}>
                     Next
                 </Button>
@@ -72,7 +73,8 @@ class RoomAndBoard extends Component {
 const mapStateToProps = (state) => {
     return {
         total: state.total,
-        schoolId:state.schoolId
+        schoolId:state.schoolId,
+        roomingTotal:state.roomingTotal
     }
 }
 

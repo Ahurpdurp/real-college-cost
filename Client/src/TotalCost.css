@@ -1,0 +1,15 @@
+.card {
+    width:20%;
+}
+
+.image img{
+    padding-top:2em;
+}
+
+.flex-container{
+    display:flex;
+}
+
+.card-image {
+    height:50%;
+}
