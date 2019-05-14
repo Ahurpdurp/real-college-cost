@@ -32,4 +32,4 @@ Next, we're going to calculate monthly bills, such as phone bills, food, stuff l
 
 ![alt text](https://raw.githubusercontent.com/Ahurpdurp/real-college-cost/master/Client/src/images/Page5.png)
 
-And that's currently what's been developed! The project is expected to be done by the end of May. I promise the final product will be much cleaner :). Feel free to ask me any questions or offer any criticism. Thanks for reading!
+And that's currently what's been developed! The project is expected to be done by the end of May. I promise the final product will be much cleaner :). Feel free to ask me any questions or offer any criticism. Thanks for reading! 
