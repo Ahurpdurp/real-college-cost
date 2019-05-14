@@ -61,7 +61,7 @@ class RoomAndBoard extends Component {
             <div>
                 <TitleHeader />
                 <Image src = 'https://www.shareicon.net/data/128x128/2016/09/26/835174_buildings_512x512.png'/>
-                <Hero  color = 'dark' >
+                <Hero className = 'housing-hero' color = 'dark' >
                     <Hero.Body>
                     <Heading className = 'housing-intro' subtitle>Housing time! {this.props.schoolName} is in {this.state.city}. If you see something 
                     already filled out below, that's our best estimate based on preexisting data for <b>on campus housing.</b>. If it's blank or you know you want to live 

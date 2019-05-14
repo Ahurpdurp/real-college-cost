@@ -12,7 +12,7 @@ Here's a flow of the website so far. I expect to finish the website late May.
 
 Home Page: 
 
-![alt text](https://raw.githubusercontent.com/Ahurpdurp/real-college-cost/master/Client/src/images/Page1.png)
+![alt text](https://raw.githubusercontent.com/Ahurpdurp/real-college-cost/master/Client/src/images/homepage.png)
 
 Search for your college (this uses a college api of over 7,200 colleges). 
 
