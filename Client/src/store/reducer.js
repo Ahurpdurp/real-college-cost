@@ -1,7 +1,7 @@
 const initialState = {
     schoolName: '',
     total:0,
-    tuitionTotal:0,
+    tuitionTotal:'',
     roomingTotal:0,
     textbookTotal:1200,
     laptopTotal:0,

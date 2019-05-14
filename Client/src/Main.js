@@ -17,8 +17,9 @@ import SearchRouter from './SearchRouter.js';
 class Main extends Component{
     
     render(){
+
         return(
-        <div className = 'body-container'>
+        <div className = 'body-container' style = {{'backgroundColor':'#e3f8f5'}}>
             <BrowserRouter>
                 <Switch>
                 <Route exact path = {this.props.match.path} component={Search}/>

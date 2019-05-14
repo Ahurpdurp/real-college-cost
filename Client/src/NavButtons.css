@@ -1,0 +1,18 @@
+.nav-button-container {
+    display:flex;
+    justify-content: center;
+}
+
+.back-next-buttons {
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 10px;
+    background-color:rgb(176, 204, 196);
+    width:7em;
+    margin-left:2em;
+    margin-right:2em;
+    margin-top:3em;
+    color:rgb(243, 243, 243);
+}
+
+
+

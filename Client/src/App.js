@@ -8,10 +8,11 @@ import Home from './Home.js'
 import Main from './Main.js'
 import TotalCost from './TotalCost.js';
 import SearchRouter from './SearchRouter.js';
+import './NavButtons.css'
 
 function App() {
   return (
-    <div>
+    <div className = 'big-container'>
       <BrowserRouter>
       <Switch>
           <Route exact path = '/login' component = {Login}></Route>

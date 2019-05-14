@@ -8,6 +8,7 @@ import Notification from 'react-bulma-components/lib/components/notification';
 import 'react-bulma-components/lib/components/form';
 import TitleHeader from './Header.js'
 import InputNumber from 'react-input-just-numbers';
+import Message from 'react-bulma-components/lib/components/message';
 
 class Tuition extends Component {
     constructor(props){
@@ -50,6 +51,10 @@ class Tuition extends Component {
         })
     }
 
+    onBackButton = () => {
+        this.props.history.push('/main');
+    }
+
     onCustomTuition = (e) => {
         this.setState({
             parentIncome:e.target.value
@@ -66,12 +71,9 @@ class Tuition extends Component {
         return(
             <div>
                 <TitleHeader />
-                <Heading className = 'header'>
-                    Now we have to figure out how much tuition you actually need to pay for {this.props.schoolName}.
-                    Without aid, the tuition is ${this.state.baseTuition}. But chances are, you don't have to pay that much.
-                </Heading>
-                <Heading subtitle>
-                    How much do your parents make? If you're not sure, give it your best guess!
+                <Heading subtitle className = 'header-tuition'>
+                    Now we have to figure out how much <b>yearly</b> tuition you actually need to pay for at {this.props.schoolName}.
+                    Without aid, the tuition is <b>${this.state.baseTuition.toLocaleString()}</b>. But chances are, you don't have to pay that much. <u>How much do your parents make?</u> If you're not sure, give it your best guess!
                 </Heading>
                 <div className = 'tuition-buttons'>
                     <Button onClick = {() => this.onParentIncome('0-30000')}>
@@ -90,21 +92,29 @@ class Tuition extends Component {
                         $110,001 + 
                     </Button>
                 </div>
-                {this.state.parentIncome === null ? <h1>No estimate available :(</h1> : 
-                this.state.parentIncome === '' ? <h1>Click one of the buttons above for an estimate!</h1> : 
-                <h1>Your estimate is shown below ↓</h1>}
-                <Notification color='danger'>
-                    If you're okay with the number below, go to the next page. If have your own tuition cost
-                    in mind, or if a result wasn't returned, go ahead and add your own estimate. If you know you're taking 
-                    out a loan or your parents are helping out, adjust accordingly. Remember, we're going trying to estimate the
-                    <b>yearly</b> cost of college because it's easier to estimate this way. 
-                </Notification>
                 <div className = 'tuition-box'>
                     <InputNumber onChange = {(event) => {this.onCustomTuition(event)}} value = {this.state.parentIncome} placeholder = 'Tuition cost...' className = 'input'></InputNumber>
                 </div>
-                <Button onClick = {this.onEstimateTotal}>
-                    Next
+                <Message className = 'is-primary estimate-text'>
+                    <Message.Header className = 'estimate-header'>
+                    {this.state.parentIncome === null ? <h1>No estimate available :(</h1> : this.state.parentIncome === '' ? <h1>Click one of the buttons above for an estimate!</h1> : 
+                <h1>Your estimate is shown above ↑</h1>}
+                    </Message.Header>
+                    <Message.Body>
+                        If you're okay with the number above, go to the next page. If have your own tuition cost
+                        in mind, or if a result wasn't returned, go ahead and add your own estimate. If you know you're taking 
+                        out a loan or your parents are helping out, adjust accordingly. If you want to calculate day by day college costs,
+                        you can put 0 for the number above to ignore tuition (ha ha ha...)
+                    </Message.Body>
+                    </Message>
+                <div className = 'nav-button-container'>
+                <Button className = 'back-next-buttons' onClick = {this.onBackButton}>
+                    <b>Back</b>
+                </Button>  
+                <Button className = 'back-next-buttons' onClick = {this.onEstimateTotal}>
+                    <b>Next</b>
                 </Button>
+                </div>
             </div>
         )
     }

@@ -5,7 +5,9 @@ import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
 import TitleHeader from './Header.js'
 import InputNumber from 'react-input-just-numbers';
-
+import "./RoomAndBoard.css"
+import Image from 'react-bulma-components/lib/components/image';
+import Hero from 'react-bulma-components/lib/components/hero';
 
 class RoomAndBoard extends Component {
     constructor(props){
@@ -38,6 +40,10 @@ class RoomAndBoard extends Component {
         })
     }
 
+    onBackButton = () => {
+        this.props.history.push('/main/2');
+    }
+
     handleTextChange = (e) => {
         this.setState({
             roomAndBoard:e.target.value
@@ -54,17 +60,25 @@ class RoomAndBoard extends Component {
         return(
             <div>
                 <TitleHeader />
-                <Heading subtitle>
-                    Now that we got tuition of the way, let's look at living expenses. Most likely, the first year you'll live on campus. If you do, we may 
-                    have an estimate for you already. If you want to live off campus in an apartment, that's fine too. Just put in your own estimates.
-                </Heading>
-                <Heading subtitle>You're going to be in {this.state.city}...let's calculate some living expenses now. If you see something 
-                already filled out below, that's our best estimate based on preexisting data for <b>on campus housing.</b>. If it's blank or you know you want to live 
-                off campus (most people don't, at least for the first year), fill out your own estimate. Remember, we're calculating your costs for <u>one year!</u></Heading>
-                <InputNumber className = 'input' value = {this.state.roomAndBoard} onChange = {(event) => this.handleTextChange(event)}></InputNumber>
-                <Button onClick = {this.onEstimateTotal}>
-                    Next
+                <Image src = 'https://www.shareicon.net/data/128x128/2016/09/26/835174_buildings_512x512.png'/>
+                <Hero  color = 'dark' >
+                    <Hero.Body>
+                    <Heading className = 'housing-intro' subtitle>Housing time! {this.props.schoolName} is in {this.state.city}. If you see something 
+                    already filled out below, that's our best estimate based on preexisting data for <b>on campus housing.</b>. If it's blank or you know you want to live 
+                    off campus (most people don't, at least for the first year), fill out your own estimate. Remember, we're calculating your costs for <u>one year!</u></Heading>
+                    </Hero.Body>
+                </Hero>
+                <div className = 'housing-box'>
+                    <InputNumber className = 'input' value = {this.state.roomAndBoard} onChange = {(event) => this.handleTextChange(event)}></InputNumber>
+                </div>
+                <div className = 'nav-button-container'>
+                <Button className = 'back-next-buttons' onClick = {this.onBackButton}>
+                    <b>Back</b>
+                </Button>  
+                <Button className = 'back-next-buttons' onClick = {this.onEstimateTotal}>
+                    <b>Next</b>
                 </Button>
+                </div>
             </div>
         )
     }
@@ -74,7 +88,8 @@ const mapStateToProps = (state) => {
     return {
         total: state.total,
         schoolId:state.schoolId,
-        roomingTotal:state.roomingTotal
+        roomingTotal:state.roomingTotal,
+        schoolName:state.schoolName
     }
 }
 

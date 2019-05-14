@@ -26,17 +26,15 @@ class Home extends Component{
                 <Container>
                 <Heading style = {{'textAlign':'center'}}size = {1}>RealCollegeCost</Heading>
                 <Heading style = {{'paddingTop':'3em','textAlign':'center'}} subtitle size={4}>
-                    College's expensive, and tuition isn't the whole picture. 
+                    College's expensive. Let's plan ahead. 
                 </Heading>
                 </Container>
             </Hero.Body>
         </Hero>
         <Content className = 'description' >
             <p>
-                When you're thinking about which college to go to, one thing to always think about is money, because this world 
-                is run by bullshit fucking rich bastards. Unfortunately, while tuition is the bulk of the cost, there are many other things
-                you gotta worry about, such as room and boarding, food, certain types of liquids, etc. That's where RealCollegeCost comes in. Using this app, you can get an accurate estimate of 
-                the true annual cost of attending a university. 
+                When thinking about the cost of college, tuition isn't the whole picture (unfortunately). This website is intended to 
+                give you an honest outlook on your overall cost for college so you can plan ahead. 
             </p>
         </Content>
         <Columns className = 'facts'>

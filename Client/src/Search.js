@@ -4,6 +4,7 @@ import 'react-bulma-components/lib/components/form';
 import Heading from 'react-bulma-components/lib/components/heading';
 import './Search.css'
 import TitleHeader from './Header.js'
+
 class Search extends Component {
     constructor(){
         super()
@@ -20,7 +21,10 @@ class Search extends Component {
     onSearchChange = (e) => {
         let baseUrl = "https://api.data.gov/ed/collegescorecard/v1/schools?"
         let apiKey = "S0RreVIMaoUJRJiIb9vLSTqiouUFP0KwjX5OCdwa"
-        let URL = `${baseUrl}school.name=${e.target.value}&api_key=${apiKey}&&_fields=latest.student.size,school.name,latest.cost.tuition.out_of_state,id`
+        let perPage = "&per_page=18"
+        let URL = `${baseUrl}school.name=${e.target.value}${perPage}&api_key=${apiKey}&&_fields=latest.student.size,school.name,latest.cost.tuition.out_of_state,id`
+        console.log(URL)
+
         fetch(URL)
         .then(response => response.json())
         .then(response => this.setState({
