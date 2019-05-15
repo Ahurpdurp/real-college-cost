@@ -1,0 +1,40 @@
+.subscriptions-flex {
+    display:flex;
+}
+.subscriptions-card{
+    width:30%;
+    margin:1.5em;
+    border-radius: 40px;
+    transition: transform .4s;
+}
+
+.subscriptions-card img{
+    margin-top:2em;
+}
+
+.subscriptions-card:hover{
+    transform: scale(1.05)
+}
+
+.sub-input {
+    width:30%;
+    margin-left:30%;
+}
+
+.sub-input1 {
+    width:30%;
+    margin-left:30%;
+    margin-top:3em;
+}
+
+.spotify {
+    background-color:rgb(157, 255, 181);
+}
+
+.amzn {
+    background-color: rgb(255, 255, 188);
+}
+
+.nflx {
+    background-color: rgb(255, 128, 128);
+}

@@ -1,13 +1,13 @@
 const initialState = {
     schoolName: '',
     total:0,
-    tuitionTotal:'',
+    tuitionTotal:0,
     roomingTotal:0,
     textbookTotal:1200,
     laptopTotal:0,
     foodTotal:3000,
     restaurantTotal:1000,
-    phoneTotal:600,
+    phoneTotal:620,
     internetTotal:360,
     spotifyTotal:60,
     amazonPrimeTotal:59,
@@ -15,7 +15,8 @@ const initialState = {
     drinkTotal:0,
     alcoholTotal:0,
     clubTotal:0,
-    clothingTotal:0,
+    clothingTotal:20,
+    videoTotal:0,
     customTotal:0
 }
 
@@ -69,9 +70,10 @@ const reducer = (state = initialState, action) => {
                 alcoholTotal:action.alcoholTotal,
                 clubTotal:action.clubTotal,
                 clothingTotal:action.clothingTotal,
+                videoTotal:action.videoTotal,
                 customTotal:action.customTotal,
                 total:state.tuitionTotal + state.roomingTotal + state.textbookTotal + state.laptopTotal + state.foodTotal +  state.restaurantTotal + state.phoneTotal + state.internetTotal + state.spotifyTotal + state.amazonPrimeTotal + state.netflixTotal
-                + action.drinkTotal + action.alcoholTotal + action.clubTotal + action.clothingTotal + action.customTotal
+                + action.drinkTotal + action.alcoholTotal + action.clubTotal + action.clothingTotal + action.videoTotal + action.customTotal
             }
         default:
             return{

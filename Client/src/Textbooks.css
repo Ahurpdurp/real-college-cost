@@ -1,0 +1,29 @@
+.textbook-message-containers {
+    display:flex;   
+    min-height:300px;
+    margin-top:4em;
+}
+
+.textbook-laptop{
+    width:40%;
+    height:100%;
+}
+
+.textbook-body p {
+    line-height:1.7em;
+}
+
+.textbook-body {
+    min-height:300px;
+
+}
+
+.textbook-input {
+    margin-top:2em;
+    width:20%;
+    margin-left:35%;
+}
+
+.textbook-header{
+    text-align: center;
+}

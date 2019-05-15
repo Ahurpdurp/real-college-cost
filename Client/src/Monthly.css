@@ -1,0 +1,45 @@
+.monthly-flex-item {
+    display:flex;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:3em;
+}
+
+.monthly-flex-item p {
+    margin-left:4em;
+    margin-right:2em;
+    background-color:rgb(255, 219, 219);
+    border-radius:25px;
+    margin-top:-.5em;
+    margin-bottom:-.5em;
+    padding:1em;
+    line-height:1.5em;
+}
+
+.monthly-flex-item img {
+    width:10%;
+    height:10%;
+    margin:auto;
+}
+
+.restaurant p {
+    background-color:rgb(255, 250, 219)
+}
+.phone p {
+    background-color:rgb(158, 241, 142);
+}
+.internet p {
+    background-color:rgb(201, 253, 251);
+}
+
+.monthly-flex-item .input {
+    min-width:4em;
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-right:1em;
+}
+
+.monthly-title {
+    text-align: center;
+}

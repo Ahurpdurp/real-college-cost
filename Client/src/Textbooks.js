@@ -5,6 +5,9 @@ import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
 import TitleHeader from './Header.js'
 import InputNumber from 'react-input-just-numbers';
+import Message from 'react-bulma-components/lib/components/message';
+import "./Textbooks.css"
+import Hero from 'react-bulma-components/lib/components/hero';
 
 class Textbooks extends Component {
     constructor(props){
@@ -25,6 +28,9 @@ class Textbooks extends Component {
         })
     }
 
+    onBackButton = () => {
+        this.props.history.push('/main/3');
+    }
     onEstimateTotal = () => {
         let textbookTotal = parseInt(this.state.textbookCost)
         let laptopTotal = parseInt(this.state.laptopCost)
@@ -36,20 +42,35 @@ class Textbooks extends Component {
         return(
             <div>
                 <TitleHeader />
-                <Heading subtitle>
-                    Alright, we have tuition and housing out of the way. Next we gotta think about those one time 
-                    big-ticket items. The two things that come to mind are textbooks and laptops. Now, the cost of these
-                    two items <i>wildly</i> vary; College Board estimates that the yearly cost of textbooks is <b>$1,200</b> a year (holy crap!). Obviously, this depends on your major, so feel free to change this value. Remember kids,
-                    always buy used textbooks (although sometimes you're forced to buy the new edition to do homework assignments).
-                    As for laptops, chances are you probably already have one. If you do, leave the number at 0.
-                </Heading>
-                <Heading subtitle size = {5}>Estimated Textbook Cost: </Heading>
-                <InputNumber className = 'input' value = {this.state.textbookCost} onChange = {(event) => this.handleTextChange(event, "textbookCost")}></InputNumber>
-                <Heading subtitle size = {5}>Estimated Laptop Cost: </Heading>
-                <InputNumber className = 'input' value = {this.state.laptopCost} onChange = {(event) => this.handleTextChange(event, "laptopCost")}></InputNumber>
-                <Button onClick = {this.onEstimateTotal}>
-                    Next
+                <div className = 'textbook-message-containers'>
+                <Message size = '15px' className = 'textbook-laptop message is-success'>
+                <Message.Header className = 'textbook-header'>
+                    <h1>Textbook costs</h1>
+                </Message.Header>
+                <Message.Body className = 'textbook-body'>
+                    <p>College Board estimates that the yearly cost of textbooks is <b>$1,200</b> a year (<a target = '_blank' href = 'https://studentpirgs.org/campaigns/make-textbooks-affordable/'>Source</a>). You can buy used textbooks most of the time, but for intro classes especially the class will require you to have the latest edition. The default estimate will be $1,200 as shown below - if you know the major you're choosing doesn't require as many textbooks then feel free to change the estimate as desired.</p>
+                    <InputNumber className = 'textbook-input input' value = {this.state.textbookCost} onChange = {(event) => this.handleTextChange(event, "textbookCost")}></InputNumber>
+                </Message.Body>
+                </Message>
+                <Message className = 'textbook-laptop message is-warning'>
+                <Message.Header className = 'textbook-header'>
+                    <h1>Let's think about laptops</h1>
+                </Message.Header>
+                <Message.Body className = 'textbook-body'>
+                    <p>A laptop or, less commonly, a desktop is basically mandatory for college life. The good news is that you probably already have something you can bring to college. If not, you can buy a pretty solid new one for <b>$800</b>. You could always buy a used one as well (
+                        this website was created using a MacBook I bought for $400)! If you have one, just leave the box blank. If not, do some research and put in your best estimate.</p>
+                    <InputNumber className = 'textbook-input input' value = {this.state.laptopCost} onChange = {(event) => this.handleTextChange(event, "laptopCost")}></InputNumber>
+                </Message.Body>
+                </Message>
+                </div>
+                <div className = 'nav-button-container'>
+                <Button className = 'back-next-buttons' onClick = {this.onBackButton}>
+                    <b>Back</b>
+                </Button>  
+                <Button className = 'back-next-buttons' onClick = {this.onEstimateTotal}>
+                    <b>Next</b>
                 </Button>
+                </div>
             </div>
         )
     }

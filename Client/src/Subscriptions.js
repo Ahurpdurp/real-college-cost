@@ -5,7 +5,9 @@ import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
 import TitleHeader from './Header.js'
 import InputNumber from 'react-input-just-numbers';
-
+import Card from 'react-bulma-components/lib/components/card';
+import Content from 'react-bulma-components/lib/components/content';
+import './Subscriptions.css'
 
 class Subscriptions extends Component {
     constructor(props){
@@ -27,6 +29,10 @@ class Subscriptions extends Component {
         })
     }
 
+    onBackButton = () => {
+        this.props.history.push('/main/5');
+    }
+
     onEstimateTotal = () => {
         let spotifyTotal = parseInt(this.state.spotifyCost)
         let amazonPrimeTotal = parseInt(this.state.amazonPrimeCost)
@@ -39,19 +45,48 @@ class Subscriptions extends Component {
         return(
             <div>
                 <TitleHeader />
-                <Heading>Subscription Time! For any of these, if you don't want it or you have a shared plan, change the number accordingly.</Heading>
-                <Heading subtitle size = {5}>Amazon Prime. This will save your ass countless times. Plus, with the student discount, it's only $59/year and you get free streaming. 
-                If you're going to get it, just get it for the year.</Heading>
-                <InputNumber className = 'input' value = {this.state.amazonPrimeCost} onChange = {(event) => this.handleTextChange(event, "amazonPrimeCost")}></InputNumber>
-                <Heading subtitle size = {5}>Spotify. If you don't get at least the student plan for 5/month, you're trolling. Or get some friends and get the family plan. Hulu's also included with this! </Heading>
-                <InputNumber className = 'input' value = {this.state.spotifyCost} onChange = {(event) => this.handleTextChange(event, "spotifyCost")}></InputNumber>
-                <Heading subtitle size = {5}>Netflix. "I can't study without Netflix in the background" is a pretty popular belief. If you're one of those people, it's gonna cost $9/month, or 108 a year. 
-                But if you get three friends, the four of you can get the Premium and only have to chip in four dollars a month. If you want HBO, you can get the student discount for 10/month...but let's be honest, 
-                someone will probably let you watch Game of Thrones with them.</Heading>
-                <InputNumber className = 'input' value = {this.state.netflixCost} onChange = {(event) => this.handleTextChange(event, "netflixCost")}></InputNumber>
-                <Button onClick = {this.onEstimateTotal}>
-                    Next
+                <Heading style = {{'text-align':'center'}}>Subscription Time!</Heading>
+                <Heading style = {{'text-align':'center'}} subtitle>As per usual, edit as needed</Heading>
+                <div className = 'subscriptions-flex'>
+                <Card className = 'spotify subscriptions-card'>
+                    <Card.Image size={64} src="https://image.flaticon.com/icons/png/512/87/87409.png" />
+                    <Card.Content className = 'subscriptions-content'>            
+                        <Heading size={4}>Music</Heading>
+                        <Content>
+                        Spotify. The student discount is <b>$5/month</b>, and it also includes Hulu for free. 
+                        </Content>
+                        <InputNumber className = 'sub-input1 input' value = {this.state.spotifyCost} onChange = {(event) => this.handleTextChange(event, "spotifyCost")}></InputNumber>
+                    </Card.Content>
+                </Card>
+                <Card className = 'amzn subscriptions-card'>
+                    <Card.Image size={64} src="https://www.shareicon.net/data/128x128/2016/07/10/119668_media_512x512.png" />
+                    <Card.Content>            
+                        <Heading size={4}>Amazon Prime</Heading>
+                        <Content>
+                        Optional, but insanely useful. Plus, with the student discount, it's only <b>$59/year</b> and you get free streaming. 
+                        </Content>
+                        <InputNumber className = 'sub-input1 input' value = {this.state.amazonPrimeCost} onChange = {(event) => this.handleTextChange(event, "amazonPrimeCost")}></InputNumber>
+                    </Card.Content>
+                </Card>
+                <Card className = 'nflx subscriptions-card'>
+                    <Card.Image size={64} src="https://image.flaticon.com/icons/png/512/68/68966.png" />
+                    <Card.Content>            
+                        <Heading size={4}>Streaming Services</Heading>
+                        <Content>
+                        Netflix is life. That's $9/month, or <b>$108/year</b>. With three friends, the Premium service is <b>$4/month</b> each. HBO's <b>$10/month</b> with the student discount. The default estimate is for Netflix.
+                        </Content>
+                        <InputNumber className = 'sub-input input' value = {this.state.netflixCost} onChange = {(event) => this.handleTextChange(event, "netflixCost")}></InputNumber>
+                    </Card.Content>
+                </Card>
+                </div>
+                <div className = 'nav-button-container'>
+                <Button className = 'back-next-buttons' onClick = {this.onBackButton}>
+                    <b>Back</b>
+                </Button>  
+                <Button className = 'back-next-buttons' onClick = {this.onEstimateTotal}>
+                    <b>Next</b>
                 </Button>
+                </div>
             </div>
         )
     }

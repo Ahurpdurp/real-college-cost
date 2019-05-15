@@ -63,7 +63,7 @@ class RoomAndBoard extends Component {
                 <Image src = 'https://www.shareicon.net/data/128x128/2016/09/26/835174_buildings_512x512.png'/>
                 <Hero className = 'housing-hero' color = 'dark' >
                     <Hero.Body>
-                    <Heading className = 'housing-intro' subtitle>Housing time! {this.props.schoolName} is in {this.state.city}. If you see something 
+                    <Heading className = 'housing-intro' subtitle>Housing time! {this.props.schoolName} is in <u>{this.state.city}</u>. If you see something 
                     already filled out below, that's our best estimate based on preexisting data for <b>on campus housing.</b>. If it's blank or you know you want to live 
                     off campus (most people don't, at least for the first year), fill out your own estimate. Remember, we're calculating your costs for <u>one year!</u></Heading>
                     </Hero.Body>

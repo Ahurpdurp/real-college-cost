@@ -1,15 +1,80 @@
-.card {
+.total-cost-container {
+    display:grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: center;
+}
+
+.total-cost-container .card{
+    transition:.4s;
+}
+
+.total-cost-container .card:hover{
+    transform:scale(1.03);
+    z-index: 2;
+}
+
+.total-cost-container img {
+    padding-top:1em;
+}
+
+.total-cost-container .content {
+    line-height:1.5em;
+}
+
+.total-cost-header {
+    margin-top:1em;
+    text-align: center;
+    padding-top:1em;
+}
+
+
+.college-inflation-section p{
+    text-align: center;
+    text-emphasis: none;
+    width:80%;
+    color:black;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.5em;
+    background-color:rgb(115, 243, 115);
+    padding:2em;
+    border-radius:25px;
+}
+
+.non-tuition p{
+    text-align: center;
+    text-emphasis: none;
+    width:80%;
+    color:black;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.5em;
+    background-color:rgb(115, 243, 211);
+    padding:2em;
+    border-radius:25px;
+}
+
+.total-total h1{
+    text-align: center;
+    text-emphasis: none;
+    width:80%;
+    color:black;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.5em;
+    background-color:rgb(115, 217, 243);
+    padding:1em;
+    border-radius:25px;
+}
+
+a { color: inherit; } 
+
+.college-total {
+    text-align: center;
+    background-color:rgb(250, 250, 250);
     width:20%;
-}
-
-.image img{
-    padding-top:2em;
-}
-
-.flex-container{
-    display:flex;
-}
-
-.card-image {
-    height:50%;
+    padding:.7em;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 25px;
 }
