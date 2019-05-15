@@ -53,7 +53,7 @@ class Misc extends Component {
             <div>
                 <TitleHeader />
                 <Heading className = 'misc-title' subtitle>
-                    Last Page...we're in the end game now. The most important part of college is having fun (the second being studying...), so naturally the this whole page is dedicated to 
+                    <b>Last Page</b> - we're in the end game now. The most important part of college is having fun (the second being studying...), so naturally the this whole page is dedicated to 
                     entertainment and recreational activities. 
                 </Heading>
                 <div className = 'grid-container'>
@@ -73,8 +73,8 @@ class Misc extends Component {
                     <Hero.Body>
                         <Container>
                         <Heading size = {4}>Alcohol</Heading>
-                        <Heading className = 'misc-description'  subtitle size={5}>
-                        According to recent surveys, the average student spends about $900/year on alcohol <a target = '_blank' href = "https://www.banyanpompano.com/2015/03/23/college-binge-drinking-alcohol-abuse-florida-alcoholism-rehab-young-adult/">(Source)</a>. 
+                        <Heading className = 'misc-description' subtitle size={5}>
+                        According to recent surveys, the average student spends about $900/year on alcohol <a rel="noopener noreferrer" target = '_blank' href = "https://www.banyanpompano.com/2015/03/23/college-binge-drinking-alcohol-abuse-florida-alcoholism-rehab-young-adult/">(Source)</a>. 
                     Not everyone drinks though, so the default value is 0.
                         </Heading>
                         <InputNumber className = 'input misc-input' value = {this.state.alcoholCost} onChange = {(event) => this.handleTextChange(event, "alcoholCost")}></InputNumber>

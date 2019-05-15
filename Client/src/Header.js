@@ -1,12 +1,12 @@
 import Heading from 'react-bulma-components/lib/components/heading';
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-
+import "./Header.css"
 
 class TitleHeader extends Component{
     render(){
         return(
-            <div>
+            <div className = 'header-header'>
                 <Heading size = {3} className = 'header'>RealCollegeCost</Heading>
                 <Heading style = {{'text-align':'center','color':'grey'}}subtitle>Current Total: ${this.props.total.toLocaleString()}</Heading>
             </div>

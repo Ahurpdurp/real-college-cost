@@ -1,0 +1,54 @@
+.state-location-title {
+    text-align: center;
+    padding-top:1em;
+    margin-top:1em;
+}
+
+.statelocation-container {
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:white;
+    padding:1em;
+    border-radius:25px;
+}
+
+.state-button-container{
+    display:flex;
+    justify-content: center;
+}
+
+.state-buttons{
+    margin:2em;
+    padding-top:1em;
+}
+
+.state-buttons .button{
+    transition: .2s;
+    margin-top:2em;
+}
+
+.state-buttons .button:hover{
+    transform:scale(1.1);
+}
+
+.one{
+    background-color:rgb(219, 236, 255);
+    padding-left:2em;
+    padding-right:2em;
+    border-radius:25px;
+}
+
+.two{
+    background-color:rgb(254, 255, 219);
+    padding-left:2em;
+    padding-right:2em;
+    border-radius:25px;
+}
+
+.three{
+    background-color:rgb(255, 219, 230);
+    padding-left:2em;
+    padding-right:2em;
+    border-radius:25px;
+}

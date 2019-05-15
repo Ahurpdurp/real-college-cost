@@ -4,7 +4,6 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import { connect } from 'react-redux'
 import Button from 'react-bulma-components/lib/components/button';
 import './Tuition.css'
-import Notification from 'react-bulma-components/lib/components/notification';
 import 'react-bulma-components/lib/components/form';
 import TitleHeader from './Header.js'
 import InputNumber from 'react-input-just-numbers';
@@ -16,7 +15,7 @@ class Tuition extends Component {
         this.state = {
             tuitionButton:'',
             parentIncome:this.props.tuitionTotal,
-            reuslts:[],
+            results:[],
             baseTuition:''
         }
     }
@@ -25,27 +24,38 @@ class Tuition extends Component {
         window.scrollTo(0, 0)
         let baseUrl = "https://api.data.gov/ed/collegescorecard/v1/schools?"
         let apiKey = "S0RreVIMaoUJRJiIb9vLSTqiouUFP0KwjX5OCdwa"
-        let URL = `${baseUrl}id=${this.props.schoolId}&api_key=${apiKey}&&_fields=latest.cost.tuition.out_of_state`
+        let stateStatus = this.props.stateStatus
+        let URL = `${baseUrl}id=${this.props.schoolId}&api_key=${apiKey}&&_fields=latest.cost.tuition.${stateStatus}`
         console.log(URL)
         fetch(URL)
         .then(response => response.json())
         .then(results => {
             this.setState({
-                baseTuition:results.results[0]['latest.cost.tuition.out_of_state']
+                baseTuition:results.results[0][`latest.cost.tuition.${stateStatus}`]
             })
         })
+        .then(() => {
+        if(this.props.stateStatus === 'in_state'){
+            this.setState({
+                parentIncome:this.state.baseTuition
+            })
+            }
+        })
+
     }
 
     onParentIncome = (tuitionValue) => {
         let baseUrl = "https://api.data.gov/ed/collegescorecard/v1/schools?"
         let apiKey = "S0RreVIMaoUJRJiIb9vLSTqiouUFP0KwjX5OCdwa"
-        let URL = `${baseUrl}id=${this.props.schoolId}&api_key=${apiKey}&&_fields=latest.cost.net_price.private.by_income_level.${tuitionValue},school.city`
+        let schoolType = this.props.schoolType
+        let URL = `${baseUrl}id=${this.props.schoolId}&api_key=${apiKey}&&_fields=latest.cost.net_price.${schoolType}.by_income_level.${tuitionValue},school.city`
+        console.log(URL)
         fetch(URL)
         .then(response => response.json())
         .then(results => {
             this.setState({
                 results:results.results[0],
-                parentIncome:results.results[0][`latest.cost.net_price.private.by_income_level.${tuitionValue}`],
+                parentIncome:results.results[0][`latest.cost.net_price.${schoolType}.by_income_level.${tuitionValue}`],
                 city:results.results[0]['school.city']
             })
         })
@@ -71,6 +81,8 @@ class Tuition extends Component {
         return(
             <div>
                 <TitleHeader />
+                {this.props.stateStatus !== 'in_state' ?
+                <div>
                 <Heading subtitle className = 'header-tuition'>
                     Now we have to figure out how much <b>yearly</b> tuition you actually need to pay for at {this.props.schoolName}.
                     Without aid, the tuition is <b>${this.state.baseTuition.toLocaleString()}</b>. But chances are, you don't have to pay that much. <u>How much do your parents make?</u> If you're not sure, give it your best guess!
@@ -92,6 +104,12 @@ class Tuition extends Component {
                         $110,001 + 
                     </Button>
                 </div>
+                </div> :              
+                <Heading subtitle className = 'header-tuition'>
+                    Normally we'd calculate financial aid based on your parents' incomes, but since you selected in-state, we don't need to do that.
+                    Your estimated tuition cost is <b>${this.state.baseTuition.toLocaleString()}</b>. 
+                </Heading>
+                }
                 <div className = 'tuition-box'>
                     <InputNumber onChange = {(event) => {this.onCustomTuition(event)}} value = {this.state.parentIncome} placeholder = 'Tuition cost...' className = 'input'></InputNumber>
                 </div>
@@ -126,7 +144,9 @@ const mapStateToProps = (state) => {
     return {
         schoolName: state.schoolName,
         schoolId:state.schoolId,
-        tuitionTotal:state.tuitionTotal
+        tuitionTotal:state.tuitionTotal,
+        stateStatus:state.stateStatus,
+        schoolType:state.schoolType
     }
 }
 

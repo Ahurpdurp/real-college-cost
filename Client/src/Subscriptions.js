@@ -45,8 +45,10 @@ class Subscriptions extends Component {
         return(
             <div>
                 <TitleHeader />
-                <Heading style = {{'text-align':'center'}}>Subscription Time!</Heading>
-                <Heading style = {{'text-align':'center'}} subtitle>As per usual, edit as needed</Heading>
+                <div className = 'subscription-header'>
+                    <Heading style = {{'text-align':'center'}}>Subscription Time!</Heading>
+                    <Heading style = {{'text-align':'center'}} subtitle>As per usual, edit as needed</Heading>
+                </div>
                 <div className = 'subscriptions-flex'>
                 <Card className = 'spotify subscriptions-card'>
                     <Card.Image size={64} src="https://image.flaticon.com/icons/png/512/87/87409.png" />

@@ -4,7 +4,6 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import { connect } from 'react-redux'
 import Card from 'react-bulma-components/lib/components/card';
 import Content from 'react-bulma-components/lib/components/content';
-import Container from 'react-bulma-components/lib/components/container';
 import './TotalCost.css'
 
 
@@ -33,7 +32,7 @@ class TotalCost extends Component{
             <div>
                 <div className = 'total-cost-header'>
                     <Heading subtitle>Whew, finally done! For one year, your estimated cost for going to {this.props.schoolName} is: </Heading>
-                    <Heading style = {{'paddingTop':'.5em'}}>{this.props.total.toLocaleString()} Dollars!</Heading>
+                    <Heading className = 'total-cost-value' style = {{'paddingTop':'.5em'}}>{this.props.total.toLocaleString()} Dollars!</Heading>
                     <Heading>Let's see a break down of the costs:</Heading>
                 </div>
                 <div className = 'total-cost-container'>
@@ -97,7 +96,7 @@ class TotalCost extends Component{
                 </div>
                 <div className = 'college-inflation-section'>
                 <p>So that's the cost of one year. Now what's the total cost? Let's start with tuition, since tuition increase at a much higher rate than the average 
-                    rate of inflation. According to the College Board data <a href = 'https://www.savingforcollege.com/tutorial101/the-real-cost-of-higher-education' target = '_blank'>(Source)</a>,
+                    rate of inflation. According to the College Board data <a rel="noopener noreferrer" href = 'https://www.savingforcollege.com/tutorial101/the-real-cost-of-higher-education' target = '_blank'>(Source)</a>,
                     the average rate of inflation recently was around the 3-4% range. Using this estimate, your estimated four year tuition cost is: 
                 </p>
                 <Heading className = 'college-total'>

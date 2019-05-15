@@ -6,7 +6,6 @@ import Button from 'react-bulma-components/lib/components/button';
 import TitleHeader from './Header.js'
 import InputNumber from 'react-input-just-numbers';
 import Box from 'react-bulma-components/lib/components/box';
-import { Input } from 'react-bulma-components/lib/components/form';
 import './Monthly.css'
 
 class Monthly extends Component {
@@ -51,7 +50,7 @@ class Monthly extends Component {
                 Let's take care of some life costs.
                 </Heading>
                 <Box className = 'monthly-flex-item'>
-                <img src = 'https://image.flaticon.com/icons/png/512/18/18399.png' />
+                <img alt = 'grocery-icon' src = 'https://image.flaticon.com/icons/png/512/18/18399.png' />
                     <p>
                     Enter your grocery costs below. The easiest way to do this is to estimate your food costs per month,
                 and multiply by 12 for the whole year. On average, you'll spend around $250 a month on food. That's <b>$3,000 </b>a year. If you're living on campus, you'll have a meal plan, which our estimate already took care of; in that case, the cost of groceries for the summer will be around <b>$750</b>
@@ -59,7 +58,7 @@ class Monthly extends Component {
                     <InputNumber className = 'input' value = {this.state.foodCost} onChange = {(event) => this.handleTextChange(event, "foodCost")}></InputNumber>
                 </Box>
                 <Box className = 'restaurant monthly-flex-item'>
-                <img src = 'https://image.flaticon.com/icons/png/512/35/35194.png' />
+                <img alt = 'dining-icon' src = 'https://image.flaticon.com/icons/png/512/35/35194.png' />
                     <p>
                     How often are you going to eat out? The easiest way to thing about it is on a per-week basis. As someone who's already done the whole college thing, 
                 once a week pretty normal. That's the estimate given. Change it according to your dining habits.
@@ -67,7 +66,7 @@ class Monthly extends Component {
                     <InputNumber className = 'input' value = {this.state.restaurantCost} onChange = {(event) => this.handleTextChange(event, "restaurantCost")}></InputNumber>
                 </Box>
                 <Box className = 'phone monthly-flex-item'>
-                <img src = 'https://image.flaticon.com/icons/png/512/54/54718.png' />
+                <img alt = 'phone-icon' src = 'https://image.flaticon.com/icons/png/512/54/54718.png' />
                     <p>
                     Phones cost too much. Phone bills are, on average, 50/month. So about 600/year. You're probably going to buy a new charger once a year as well, so
                     let's add in an extra 20 just to be safe. 
@@ -75,7 +74,7 @@ class Monthly extends Component {
                     <InputNumber className = 'input' value = {this.state.phoneCost} onChange = {(event) => this.handleTextChange(event, "phoneCost")}></InputNumber>
                 </Box>
                 <Box className = 'internet monthly-flex-item'>
-                <img src = 'https://image.flaticon.com/icons/png/512/93/93158.png' />
+                <img alt = 'wifi-icon' src = 'https://image.flaticon.com/icons/png/512/93/93158.png' />
                     <p>
                     Internet bills are tricky. If you're planning on living on campus, <u>change the number to 0</u>. Internet bills are usually $60/month, but you're 
                     probably going to split it among roommates. If you have multiple roommates, you'll pay a smaller percentage, but the plan will have to be better. The default

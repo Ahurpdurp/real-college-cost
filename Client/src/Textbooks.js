@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import Heading from 'react-bulma-components/lib/components/heading';
 import 'react-bulma-components/lib/components/form';
 import Button from 'react-bulma-components/lib/components/button';
 import TitleHeader from './Header.js'
 import InputNumber from 'react-input-just-numbers';
 import Message from 'react-bulma-components/lib/components/message';
 import "./Textbooks.css"
-import Hero from 'react-bulma-components/lib/components/hero';
 
 class Textbooks extends Component {
     constructor(props){
@@ -48,7 +46,7 @@ class Textbooks extends Component {
                     <h1>Textbook costs</h1>
                 </Message.Header>
                 <Message.Body className = 'textbook-body'>
-                    <p>College Board estimates that the yearly cost of textbooks is <b>$1,200</b> a year (<a target = '_blank' href = 'https://studentpirgs.org/campaigns/make-textbooks-affordable/'>Source</a>). You can buy used textbooks most of the time, but for intro classes especially the class will require you to have the latest edition. The default estimate will be $1,200 as shown below - if you know the major you're choosing doesn't require as many textbooks then feel free to change the estimate as desired.</p>
+                    <p>College Board estimates that the yearly cost of textbooks is <b>$1,200</b> a year (<a rel="noopener noreferrer" target = '_blank' href = 'https://studentpirgs.org/campaigns/make-textbooks-affordable/'>Source</a>). You can buy used textbooks most of the time, but for intro classes especially the class will require you to have the latest edition. The default estimate will be $1,200 as shown below - if you know the major you're choosing doesn't require as many textbooks then feel free to change the estimate as desired.</p>
                     <InputNumber className = 'textbook-input input' value = {this.state.textbookCost} onChange = {(event) => this.handleTextChange(event, "textbookCost")}></InputNumber>
                 </Message.Body>
                 </Message>

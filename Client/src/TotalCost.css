@@ -25,6 +25,16 @@
     margin-top:1em;
     text-align: center;
     padding-top:1em;
+    
+}
+
+.total-cost-value {
+    background-color:white;
+    border-radius:25px;
+    width:50%;
+    margin-right:auto;
+    margin-left:auto;
+    padding:.5em;
 }
 
 

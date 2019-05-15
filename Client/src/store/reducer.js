@@ -1,5 +1,7 @@
 const initialState = {
     schoolName: '',
+    stateStatus:'out_of_state',
+    schoolType:'',
     total:0,
     tuitionTotal:0,
     roomingTotal:0,
@@ -26,7 +28,13 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 schoolName: action.schoolName,
-                schoolId:action.schoolId
+                schoolId:action.schoolId,
+                schoolType:action.schoolType
+            }
+        case 'ADD_STATE_STATUS':
+            return{
+                ...state,
+                stateStatus:action.stateStatus
             }
         case 'ADD_TUITION_TOTAL':
             return{

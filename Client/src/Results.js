@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import "./Search.css"
 import Panel from 'react-bulma-components/lib/components/panel';
@@ -7,8 +6,16 @@ import Panel from 'react-bulma-components/lib/components/panel';
 class Results extends Component{
 
 
-    onCollegeSelect = (schoolName,schoolId) => {
-        this.props.onCollegeAddGlobal(schoolName,schoolId)
+    onCollegeSelect = (schoolName,schoolId,schoolType) => {
+        if(schoolType === 1){
+            this.props.onCollegeAddGlobal(schoolName,schoolId,'public')
+            this.props.history.push('/main/state');
+        }
+        else{
+            console.log(schoolType)
+            this.props.onCollegeAddGlobal(schoolName,schoolId,'private')
+            this.props.history.push('/main/2');
+        }
     }
 
     sortBySchoolName = (a,b) => {
@@ -29,11 +36,9 @@ class Results extends Component{
                 <Panel style = {{'padding-left':'20%'}}>
                 {this.props.searchResults.sort(this.sortBySchoolName).map(x => {
                     return (
-                        <Link style = {{'text-decoration':'none'}} to = '/main/2'>
-                        <Panel.Block onClick = {() => this.onCollegeSelect(x['school.name'], x.id)} style = {{'marginTop':'1em','justifyContent':'center','width':'70%'}}>
+                        <Panel.Block onClick = {() => this.onCollegeSelect(x['school.name'], x.id, x['school.ownership'])} style = {{'cursor': 'pointer','marginTop':'1em','justifyContent':'center','width':'70%'}}>
                         {x['school.name']}
                         </Panel.Block>
-                        </Link>
                     )
                 })}
                 </Panel>
@@ -44,7 +49,7 @@ class Results extends Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onCollegeAddGlobal: (schoolName,schoolId) => dispatch({type: 'SELECT_COLLEGE', schoolId:schoolId, schoolName:schoolName})
+      onCollegeAddGlobal: (schoolName,schoolId,schoolType) => dispatch({type: 'SELECT_COLLEGE', schoolId:schoolId, schoolName:schoolName,schoolType:schoolType})
     }
   }
 

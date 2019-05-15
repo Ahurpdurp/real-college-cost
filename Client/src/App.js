@@ -2,11 +2,8 @@ import React from 'react';
 import {BrowserRouter, Switch, Route } from 'react-router-dom'
 import './App.css';
 import { connect } from 'react-redux'
-import CollegeForm from './CollegeForm.js'
 import Login from './Login.js'
 import Home from './Home.js'
-import Main from './Main.js'
-import TotalCost from './TotalCost.js';
 import SearchRouter from './SearchRouter.js';
 import './NavButtons.css'
 
