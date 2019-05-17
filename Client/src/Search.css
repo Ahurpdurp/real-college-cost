@@ -45,3 +45,9 @@
 .panel{
     padding-bottom:2em;
 }
+
+@media screen and (max-width: 600px) {
+    .search-header {
+        font-size:.8em;
+    }
+  }

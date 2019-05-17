@@ -46,11 +46,11 @@ class StateLocation extends Component {
                 <div className = 'state-button-container'>
                     <div className = 'one state-buttons'>
                         <Image src = 'https://image.flaticon.com/icons/png/512/92/92596.png' size = {128} />
-                        <Button onClick = {() => {this.onSelectStateStatus('in_state')}} color = 'link' style = {{'font-family':'Ubuntu, sans-serif'}}>In State</Button>
+                        <Button onClick = {() => {this.onSelectStateStatus('in_state')}} color = 'link' style = {{'fontFamily':'Ubuntu, sans-serif'}}>In State</Button>
                     </div>
                     <div className = 'two state-buttons'>
                         <Image src = 'https://image.flaticon.com/icons/png/512/45/45896.png' size = {128} />
-                        <Button onClick = {() => {this.onSelectStateStatus('out_of_state')}} color = 'warning' style = {{'font-family':'Ubuntu, sans-serif'}}>Out of State</Button>
+                        <Button onClick = {() => {this.onSelectStateStatus('out_of_state')}} color = 'warning' style = {{'fontFamily':'Ubuntu, sans-serif'}}>Out of State</Button>
                     </div>
                 </div>
                 <div className = 'nav-button-container'>

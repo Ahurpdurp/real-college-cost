@@ -4,12 +4,17 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import { connect } from 'react-redux'
 import Card from 'react-bulma-components/lib/components/card';
 import Content from 'react-bulma-components/lib/components/content';
+import Button from 'react-bulma-components/lib/components/button';
 import './TotalCost.css'
 
 
 class TotalCost extends Component{
     componentDidMount(){
         window.scrollTo(0, 0)
+    }
+
+    onHomeScreenRedirect = () => {
+        this.props.history.push('/main');
     }
 
     render(){
@@ -95,8 +100,8 @@ class TotalCost extends Component{
                 </Card>
                 </div>
                 <div className = 'college-inflation-section'>
-                <p>So that's the cost of one year. Now what's the total cost? Let's start with tuition, since tuition increase at a much higher rate than the average 
-                    rate of inflation. According to the College Board data <a rel="noopener noreferrer" href = 'https://www.savingforcollege.com/tutorial101/the-real-cost-of-higher-education' target = '_blank'>(Source)</a>,
+                <p>So that's the cost of one year. Now what's the <b>total</b> cost? Let's start with <u>tuition</u>, since tuition increases at a much higher rate than the average 
+                    rate of inflation. According to the College Board data <a rel="noopener noreferrer" href = 'https://www.savingforcollege.com/tutorial101/the-real-cost-of-higher-education' target = '_blank'>(source)</a>,
                     the average rate of inflation recently was around the 3-4% range. Using this estimate, your estimated four year tuition cost is: 
                 </p>
                 <Heading className = 'college-total'>
@@ -117,6 +122,9 @@ class TotalCost extends Component{
                     <h1>So without further ado, your grand grand total is....</h1>
                 </div>
                 <Heading className = 'college-total'><b>${fourYearCompleteTotal.toLocaleString()}</b></Heading>
+                <div className = 'search-again-button-container'>
+                <Button className = 'search-again-button' onClick = {this.onHomeScreenRedirect}>Search Again!</Button>
+                </div>
             </div>
         )
     }

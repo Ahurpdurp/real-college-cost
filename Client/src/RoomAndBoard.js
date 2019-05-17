@@ -8,6 +8,7 @@ import InputNumber from 'react-input-just-numbers';
 import "./RoomAndBoard.css"
 import Image from 'react-bulma-components/lib/components/image';
 import Hero from 'react-bulma-components/lib/components/hero';
+import roomandboard from './roomandboard.json'
 
 class RoomAndBoard extends Component {
     constructor(props){
@@ -30,13 +31,9 @@ class RoomAndBoard extends Component {
                 city:results.results[0]['school.city']
             })
         })
-
-        fetch("http://localhost:8080/rooming/" + this.props.schoolId)
-        .then(response => response.json())
-        .then(results => {
-            this.setState({
-                roomAndBoard:results.roomAndBoard
-            })
+        let school = roomandboard.find(x => x.UnitID === this.props.schoolId)
+        this.setState({
+            roomAndBoard:school.roomAndBoard
         })
     }
 

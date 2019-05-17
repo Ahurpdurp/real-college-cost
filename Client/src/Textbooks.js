@@ -41,7 +41,7 @@ class Textbooks extends Component {
             <div>
                 <TitleHeader />
                 <div className = 'textbook-message-containers'>
-                <Message size = '15px' className = 'textbook-laptop message is-success'>
+                <Message className = 'textbook-laptop message is-success'>
                 <Message.Header className = 'textbook-header'>
                     <h1>Textbook costs</h1>
                 </Message.Header>

@@ -27,3 +27,15 @@
 .textbook-header{
     text-align: center;
 }
+
+@media screen and (max-width: 800px) {
+    .textbook-message-containers {
+        display:flex;
+        flex-direction: column;
+    }
+    .textbook-laptop{
+        width:90%;
+        height:100%;
+    }
+    
+}

@@ -33,10 +33,10 @@ class Results extends Component{
     render(){
         return(
             <div>
-                <Panel style = {{'padding-left':'20%'}}>
+                <Panel style = {{'paddingLeft':'20%'}}>
                 {this.props.searchResults.sort(this.sortBySchoolName).map(x => {
                     return (
-                        <Panel.Block onClick = {() => this.onCollegeSelect(x['school.name'], x.id, x['school.ownership'])} style = {{'cursor': 'pointer','marginTop':'1em','justifyContent':'center','width':'70%'}}>
+                        <Panel.Block key = {x.id} onClick = {() => this.onCollegeSelect(x['school.name'], x.id, x['school.ownership'])} style = {{'cursor': 'pointer','marginTop':'1em','justifyContent':'center','width':'70%'}}>
                         {x['school.name']}
                         </Panel.Block>
                     )

@@ -50,3 +50,28 @@
     padding-top:1em;
     padding-bottom:1em;
 }
+
+@media screen and (max-width: 800px){
+    .monthly-flex-item {
+        flex-direction: column;
+    }
+    .monthly-flex-item img {
+        display:none;
+    }
+    .monthly-flex-item p{
+        margin-left:1em;
+        margin-right:1em;
+        margin-top:0em;
+        margin-bottom:0em;
+    }
+    .monthly-flex-item .input {
+        width:85%;
+        margin-top:1em;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .monthly-title{
+        width:90%;
+    }
+}

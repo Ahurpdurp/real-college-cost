@@ -7,8 +7,8 @@ class TitleHeader extends Component{
     render(){
         return(
             <div className = 'header-header'>
-                <Heading size = {3} className = 'header'>RealCollegeCost</Heading>
-                <Heading style = {{'text-align':'center','color':'grey'}}subtitle>Current Total: ${this.props.total.toLocaleString()}</Heading>
+                <Heading size = {5} className = 'header'>RealCollegeCost</Heading>
+                <Heading style = {{'textAlign':'center','color':'grey'}}subtitle>Current Total: ${this.props.total.toLocaleString()}</Heading>
             </div>
         )
     }

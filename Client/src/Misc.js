@@ -53,7 +53,7 @@ class Misc extends Component {
             <div>
                 <TitleHeader />
                 <Heading className = 'misc-title' subtitle>
-                    <b>Last Page</b> - we're in the end game now. The most important part of college is having fun (the second being studying...), so naturally the this whole page is dedicated to 
+                    <b>Last Page</b> - we're in the end game now. College is all about having fun, so naturally the this whole page is dedicated to 
                     entertainment and recreational activities. 
                 </Heading>
                 <div className = 'grid-container'>

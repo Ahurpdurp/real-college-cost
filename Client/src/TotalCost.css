@@ -82,9 +82,32 @@ a { color: inherit; }
 .college-total {
     text-align: center;
     background-color:rgb(250, 250, 250);
-    width:20%;
+    width:30%;
     padding:.7em;
     margin-left:auto;
     margin-right:auto;
     border-radius: 25px;
+}
+
+.search-again-button-container {
+    display:flex;
+    justify-content: center;
+}
+
+.search-again-button{
+    background-color:rgb(25, 158, 25);
+    font-family: 'Ubuntu', sans-serif;
+    border-radius:10px;
+
+}
+
+@media screen and (max-width:700px){
+    .total-cost-container {
+        display:grid;
+        grid-template-columns: 90%;
+        justify-content: center;
+    }
+    .college-total{
+        width:80%;
+    }
 }

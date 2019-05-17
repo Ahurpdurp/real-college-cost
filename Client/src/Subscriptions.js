@@ -46,8 +46,8 @@ class Subscriptions extends Component {
             <div>
                 <TitleHeader />
                 <div className = 'subscription-header'>
-                    <Heading style = {{'text-align':'center'}}>Subscription Time!</Heading>
-                    <Heading style = {{'text-align':'center'}} subtitle>As per usual, edit as needed</Heading>
+                    <Heading style = {{'textAlign':'center'}}>Subscription Time!</Heading>
+                    <Heading style = {{'textAlign':'center'}} subtitle>As per usual, edit as needed</Heading>
                 </div>
                 <div className = 'subscriptions-flex'>
                 <Card className = 'spotify subscriptions-card'>

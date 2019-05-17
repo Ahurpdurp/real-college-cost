@@ -23,6 +23,7 @@
     padding-top:1em;
 }
 
+
 .state-buttons .button{
     transition: .2s;
     margin-top:2em;
@@ -46,9 +47,11 @@
     border-radius:25px;
 }
 
-.three{
-    background-color:rgb(255, 219, 230);
-    padding-left:2em;
-    padding-right:2em;
-    border-radius:25px;
-}
+
+@media screen and (max-width: 600px) {
+    .state-button-container{
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+  }

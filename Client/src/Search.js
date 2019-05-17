@@ -48,7 +48,7 @@ class Search extends Component {
         return(
             <div>
                 <TitleHeader />
-                <Heading className = 'search-header'>
+                <Heading subtitle className = 'search-header'>
                     The first step is selecting a college. Let's get that out of the way. 
                 </Heading>
                 <div className = 'input-container'>

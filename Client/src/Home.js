@@ -18,13 +18,13 @@ class Home extends Component{
     render(){
         return(
             <div>
-                <div style = {{'borderBottom':'3px solid rgb(82, 82, 82);','justifyContent':'center','display':'flex','marginLeft':'auto','marginRight':'auto'}}>
+                <div style = {{'borderBottom':'3px solid rgb(82, 82, 82)','justifyContent':'center','display':'flex','marginLeft':'auto','marginRight':'auto'}}>
                     <img style = {{'paddingTop':'2em','paddingBottom':'2em','height':'50%','width':'50%'}} src = {titleicon} alt = 'awefaefw'/>
                 </div>
         <Hero color="primary" gradient>
             <Hero.Body>
                 <Container>
-                <Heading style = {{'textAlign':'center'}}size = {1}>RealCollegeCost</Heading>
+                <Heading className = 'home-header-title' style = {{'textAlign':'center'}} size = {1}><u>RealCollegeCost</u></Heading>
                 <Heading style = {{'paddingTop':'3em','textAlign':'center'}} subtitle size={4}>
                     College's expensive. Let's plan ahead. 
                 </Heading>

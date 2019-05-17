@@ -105,7 +105,7 @@ class Tuition extends Component {
                     </Button>
                 </div>
                 </div> :              
-                <Heading subtitle className = 'header-tuition'>
+                <Heading subtitle className = 'header-tuition-alt'>
                     Normally we'd calculate financial aid based on your parents' incomes, but since you selected in-state, we don't need to do that.
                     Your estimated tuition cost is <b>${this.state.baseTuition.toLocaleString()}</b>. 
                 </Heading>
