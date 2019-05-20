@@ -8,6 +8,8 @@ import 'react-bulma-components/lib/components/form';
 import TitleHeader from './Header.js'
 import InputNumber from 'react-input-just-numbers';
 import Message from 'react-bulma-components/lib/components/message';
+import Switch from '@material-ui/core/Switch';
+
 
 class Tuition extends Component {
     constructor(props){
@@ -16,7 +18,8 @@ class Tuition extends Component {
             tuitionButton:'',
             parentIncome:this.props.tuitionTotal,
             results:[],
-            baseTuition:''
+            baseTuition:'',
+            tuitionDisabled:false
         }
     }
 
@@ -72,11 +75,22 @@ class Tuition extends Component {
     }
 
     onEstimateTotal = () => {
-        let tuitionTotal = parseInt(this.state.parentIncome)
+        let tuitionTotal = 0
+        if(!this.state.tuitionDisabled){
+            tuitionTotal = parseInt(this.state.parentIncome)     
+        }
         this.props.onAddTotal(tuitionTotal)
         this.props.history.push('/main/3');
     }
+
+    onTuitionSwitch = (e) => {
+        this.setState({
+            tuitionDisabled:e.target.checked
+        })
+    }
     
+
+
     render(){
         return(
             <div>
@@ -111,7 +125,7 @@ class Tuition extends Component {
                 </Heading>
                 }
                 <div className = 'tuition-box'>
-                    <InputNumber onChange = {(event) => {this.onCustomTuition(event)}} value = {this.state.parentIncome} placeholder = 'Tuition cost...' className = 'input'></InputNumber>
+                    <InputNumber disabled = {this.state.tuitionDisabled} onChange = {(event) => {this.onCustomTuition(event)}} value = {this.state.parentIncome} placeholder = 'Tuition cost...' className = 'input'></InputNumber>
                 </div>
                 <Message className = 'is-primary estimate-text'>
                     <Message.Header className = 'estimate-header'>
@@ -121,10 +135,14 @@ class Tuition extends Component {
                     <Message.Body>
                         If you're okay with the number above, go to the next page. If have your own tuition cost
                         in mind, or if a result wasn't returned, go ahead and add your own estimate. If you know you're taking 
-                        out a loan or your parents are helping out, adjust accordingly. If you want to calculate day by day college costs,
-                        you can put 0 for the number above to ignore tuition (ha ha ha...)
+                        out a loan or your parents are helping out, adjust accordingly. If you want to estimate college costs without 
+                        thinking about tuition (ha ha...), check the box below. 
                     </Message.Body>
                     </Message>
+                <div className = 'tuition-flex-label'>
+                    <label className = 'tuition-label'>Click below to leave tuition out of the estimate</label>
+                    <Switch color="primary" onClick = {(event) => this.onTuitionSwitch(event)}/>
+                </div>
                 <div className = 'nav-button-container'>
                 <Button className = 'back-next-buttons' onClick = {this.onBackButton}>
                     <b>Back</b>
