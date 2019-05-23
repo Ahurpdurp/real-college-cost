@@ -6,15 +6,30 @@ import Card from 'react-bulma-components/lib/components/card';
 import Content from 'react-bulma-components/lib/components/content';
 import Button from 'react-bulma-components/lib/components/button';
 import './TotalCost.css'
+import ReactMinimalPieChart from 'react-minimal-pie-chart'
 
 
 class TotalCost extends Component{
+    constructor(){
+        super()
+        this.state = {
+            tuitionTotalGraph:null,
+            roomingTotalGraph:null
+        }
+    }
     componentDidMount(){
         window.scrollTo(0, 0)
     }
 
     onHomeScreenRedirect = () => {
         this.props.history.push('/main');
+    }
+    
+    handleHomeRedirect = () => {
+        if(window.confirm("Go back to the home page? All progress will be lost.")){
+            this.props.history.push('/')
+            window.location.reload();
+        }
     }
 
     render(){
@@ -33,15 +48,72 @@ class TotalCost extends Component{
         let nonTuitionTotal = this.props.roomingTotal + textbookTotal + monthlyTotal + subscriptionTotal + miscTotal
         let fourYearNonTuition = (nonTuitionTotal + nonTuitionTotal * 1.02 + nonTuitionTotal * 1.0404 + nonTuitionTotal * 1.061208).toFixed(2)
         let fourYearCompleteTotal = (parseFloat(fourYearNonTuition) + parseFloat(fourYearTuition))
+
+        if(this.props.tuitionTotal !== 0){
+            this.state.tuitionTotalGraph = this.props.tuitionTotal
+        }
+
+        if(this.props.roomingTotal !== 0){
+            this.state.roomingTotalGraph = this.props.roomingTotal
+        }
+
         return(
             <div>
+                <div className = 'faq-button'>
+                    <Button onClick = {this.handleHomeRedirect}>
+                        Home
+                    </Button> 
+                </div>
                 <div className = 'total-cost-header'>
                     <Heading subtitle>Whew, finally done! For one year, your estimated cost for going to {this.props.schoolName} is: </Heading>
                     <Heading className = 'total-cost-value' style = {{'paddingTop':'.5em'}}>{this.props.total.toLocaleString()} Dollars!</Heading>
                     <Heading>Let's see a break down of the costs:</Heading>
                 </div>
+                <ReactMinimalPieChart className = 'pie-chart'  
+                animate
+                label
+                labelStyle={{
+                    fontSize: '2px',
+                    fontFamily: 'Ubuntu, sans-serif',
+                    fill: '#121212'
+                  }}
+                    radius={20}
+                    labelPosition={112}
+                     data={[
+                        {
+                            title: "Tuition",
+                            value: this.state.tuitionTotalGraph,
+                            color: 'rgb(255, 184, 184)'
+                        },
+                        {
+                            title: "Room and Board",
+                            value: this.state.roomingTotalGraph,
+                            color: 'rgb(255, 230, 183)'
+                        },
+                        {
+                            title: "School Equipment",
+                            value: textbookTotal,
+                            color: 'rgb(255, 255, 208)'
+                        },
+                        {
+                            title: "Monthly Costs",
+                            value: monthlyTotal,
+                            color: 'rgb(137, 255, 137)'
+                        },
+                        {
+                            title: "Subscriptions",
+                            value: subscriptionTotal,
+                            color: 'rgb(138, 138, 255)'
+                        },
+                        {
+                            title: "Recreation",
+                            value: miscTotal,
+                            color: 'rgb(255, 206, 255)'
+                        }
+                ]} />
                 <div className = 'total-cost-container'>
-                <Card>
+                {this.props.tuitionTotal !== 0 ? 
+                <Card className = 'total-cost-1'>
                     <Card.Image size = {64} src="https://image.flaticon.com/icons/png/512/62/62627.png" />
                     <Card.Content>            
                         <Heading size={4}>Tuition</Heading>
@@ -51,7 +123,10 @@ class TotalCost extends Component{
                         </Content>
                     </Card.Content>
                 </Card>
-                <Card>
+                : null    
+                }
+                {this.props.roomingTotal !== 0 ? 
+                <Card className = 'total-cost-2'>
                     <Card.Image size = {64} src="https://image.flaticon.com/icons/png/512/70/70370.png" />
                     <Card.Content>            
                         <Heading size={4}>Housing</Heading>
@@ -61,7 +136,9 @@ class TotalCost extends Component{
                         </Content>
                     </Card.Content>
                 </Card>
-                <Card>
+                : null
+                }
+                <Card className = 'total-cost-3'>
                     <Card.Image size = {64} src="https://image.flaticon.com/icons/png/512/120/120092.png" />
                     <Card.Content>            
                         <Heading size={4}>School Equipment</Heading>
@@ -70,7 +147,7 @@ class TotalCost extends Component{
                         </Content>
                     </Card.Content>
                 </Card>
-                <Card>
+                <Card className = 'total-cost-4'>
                     <Card.Image size = {64} src="https://image.flaticon.com/icons/png/512/67/67773.png" />
                     <Card.Content>            
                         <Heading size={4}>Monthly Costs</Heading>
@@ -80,7 +157,7 @@ class TotalCost extends Component{
                         </Content>
                     </Card.Content>
                 </Card>
-                <Card>
+                <Card className = 'total-cost-5'>
                     <Card.Image size = {64} src="https://image.flaticon.com/icons/png/512/54/54718.png" />
                     <Card.Content>            
                         <Heading size={4}>Subscriptions and Services</Heading>
@@ -89,7 +166,7 @@ class TotalCost extends Component{
                         </Content>
                     </Card.Content>
                 </Card>
-                <Card>
+                <Card className = 'total-cost-6'>
                     <Card.Image size = {64} src="https://image.flaticon.com/icons/png/512/99/99954.png" />
                     <Card.Content>            
                         <Heading size={4}>Recreational Costs</Heading>

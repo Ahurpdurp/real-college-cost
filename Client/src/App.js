@@ -17,6 +17,7 @@ function App() {
           <Route path ='/main' component={SearchRouter}/>
       </Switch>   
       </BrowserRouter>   
+      <h5 className = 'footer-text'>Made By <a rel="noopener noreferrer" target = '_blank' href = 'https://paul-wu.net'>Paul Wu</a>. © 2019</h5>
     </div>
   );
 }

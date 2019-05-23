@@ -42,9 +42,21 @@ class Monthly extends Component {
         this.props.history.push('/main/6');
     } 
 
+    handleHomeRedirect = () => {
+        if(window.confirm("Go back to the home page? All progress will be lost.")){
+            this.props.history.push('/')
+            window.location.reload();
+        }
+    }
+
     render(){
         return(
             <div>
+                <div className = 'faq-button'>
+                    <Button onClick = {this.handleHomeRedirect}>
+                        Home
+                    </Button> 
+                </div>
                 <TitleHeader />
                 <Heading className = 'monthly-title'>
                 Let's take care of some life costs.

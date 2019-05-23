@@ -89,18 +89,33 @@ class Tuition extends Component {
         })
     }
     
-
+    handleHomeRedirect = () => {
+        if(window.confirm("Go back to the home page? All progress will be lost.")){
+            this.props.history.push('/')
+            window.location.reload();
+        }
+    }
 
     render(){
         return(
             <div>
+                <div className = 'faq-button'>
+                    <Button onClick = {this.handleHomeRedirect}>
+                        Home
+                    </Button> 
+                </div>
                 <TitleHeader />
                 {this.props.stateStatus !== 'in_state' ?
                 <div>
                 <Heading subtitle className = 'header-tuition'>
                     Now we have to figure out how much <b>yearly</b> tuition you actually need to pay for at {this.props.schoolName}.
-                    Without aid, the tuition is <b>${this.state.baseTuition.toLocaleString()}</b>. But chances are, you don't have to pay that much. <u>How much do your parents make?</u> If you're not sure, give it your best guess!
+                   <u> How much do your parents make?</u> If you're not sure, give it your best guess!
                 </Heading>
+                {this.state.baseTuition !== null ? 
+                <Heading style = {{'padding':'1em'}}size = {5}>
+                     Without aid, the tuition is <b>${this.state.baseTuition.toLocaleString()}</b>. But chances are, you don't have to pay that much. 
+                </Heading>
+                : null}
                 <div className = 'tuition-buttons'>
                     <Button onClick = {() => this.onParentIncome('0-30000')}>
                         0 - $30,000
@@ -140,7 +155,11 @@ class Tuition extends Component {
                     </Message.Body>
                     </Message>
                 <div className = 'tuition-flex-label'>
+                    {this.state.tuitionDisabled ? 
+                    <label className = 'tuition-label'>Tuition is currently not included in the estimate</label>
+                    :
                     <label className = 'tuition-label'>Click below to leave tuition out of the estimate</label>
+                }
                     <Switch color="primary" onClick = {(event) => this.onTuitionSwitch(event)}/>
                 </div>
                 <div className = 'nav-button-container'>

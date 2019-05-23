@@ -12,12 +12,14 @@ import Misc from './Misc.js'
 import TotalCost from './TotalCost.js'
 import StateLocation from './StateLocation.js';
 import "./SearchRouter.css"
+import Faq from './Faq.js'
+
 class Main extends Component{
+    
     render(){
         return(
         <div className = 'body-container'>
             <BrowserRouter>
-
                 <Switch>
                     <Route exact path = {this.props.match.path} component={Search}/>
                     <Route exact path = {`${this.props.match.path}/state`} component = {StateLocation} />
@@ -28,6 +30,7 @@ class Main extends Component{
                     <Route exact path = {`${this.props.match.path}/6`} component = {Subscriptions} />
                     <Route exact path = {`${this.props.match.path}/7`} component = {Misc} />
                     <Route exact path = '/main/total' component = {TotalCost} />
+                    <Route path = '/main/faq' component={Faq} />
                 </Switch>   
             </BrowserRouter>   
         </div>

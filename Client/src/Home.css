@@ -1,4 +1,22 @@
 
+.faq-button .button {
+    width:5%; 
+    background-color:rgb(131, 197, 197);
+    color:white;
+    border-color:rgba(255, 255, 255, 0);
+    transition: .2s
+}
+
+.faq-button .button:hover {
+    transform:scale(1.05)
+}
+
+
+
+.faq-button {
+    height:0
+}
+
 .description p {
     padding-top:4em;
     padding-bottom:4em;

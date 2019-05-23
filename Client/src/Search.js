@@ -4,6 +4,7 @@ import 'react-bulma-components/lib/components/form';
 import Heading from 'react-bulma-components/lib/components/heading';
 import './Search.css'
 import TitleHeader from './Header.js'
+import Button from 'react-bulma-components/lib/components/button';
 
 class Search extends Component {
     constructor(){
@@ -32,6 +33,13 @@ class Search extends Component {
         )
     }
 
+    handleHomeRedirect = () => {
+        if(window.confirm("Go back to the home page? All progress will be lost.")){
+            this.props.history.push('/')
+            window.location.reload();
+        }
+    }
+
     handleCollegeSearch = () => {
         let baseUrl = "https://api.data.gov/ed/collegescorecard/v1/schools?"
         let apiKey = "S0RreVIMaoUJRJiIb9vLSTqiouUFP0KwjX5OCdwa"
@@ -47,6 +55,11 @@ class Search extends Component {
     render(){
         return(
             <div>
+                <div className = 'faq-button'>
+                    <Button onClick = {this.handleHomeRedirect}>
+                        Home
+                    </Button> 
+                </div>
                 <TitleHeader />
                 <Heading subtitle className = 'search-header'>
                     The first step is selecting a college. Let's get that out of the way. 

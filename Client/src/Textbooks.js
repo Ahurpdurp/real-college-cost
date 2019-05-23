@@ -36,9 +36,21 @@ class Textbooks extends Component {
         this.props.history.push('/main/5');
     } 
 
+    handleHomeRedirect = () => {
+        if(window.confirm("Go back to the home page? All progress will be lost.")){
+            this.props.history.push('/')
+            window.location.reload();
+        }
+    }
+    
     render(){
         return(
             <div>
+                <div className = 'faq-button'>
+                    <Button onClick = {this.handleHomeRedirect}>
+                        Home
+                    </Button> 
+                </div>
                 <TitleHeader />
                 <div className = 'textbook-message-containers'>
                 <Message className = 'textbook-laptop message is-success'>

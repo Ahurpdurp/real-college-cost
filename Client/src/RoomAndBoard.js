@@ -9,13 +9,15 @@ import "./RoomAndBoard.css"
 import Image from 'react-bulma-components/lib/components/image';
 import Hero from 'react-bulma-components/lib/components/hero';
 import roomandboard from './roomandboard.json'
+import Switch from '@material-ui/core/Switch';
 
 class RoomAndBoard extends Component {
     constructor(props){
         super(props)
         this.state = {
             city:'',
-            roomAndBoard:this.props.roomingTotal
+            roomAndBoard:this.props.roomingTotal,
+            roomAndBoardDisabled:false
         }
     }
 
@@ -48,14 +50,35 @@ class RoomAndBoard extends Component {
     } 
 
     onEstimateTotal = () => {
-        let roomingTotal = parseInt(this.state.roomAndBoard)
+        let roomingTotal = 0 
+        if(!this.state.roomAndBoardDisabled){
+            roomingTotal = parseInt(this.state.roomAndBoard)
+        }
         this.props.onAddTotal(roomingTotal)
         this.props.history.push('/main/4');
+    }
+
+    onRoomingSwitch = (e) => {
+        this.setState({
+            roomAndBoardDisabled:e.target.checked
+        })
+    }
+
+    handleHomeRedirect = () => {
+        if(window.confirm("Go back to the home page? All progress will be lost.")){
+            this.props.history.push('/')
+            window.location.reload();
+        }
     }
 
     render(){
         return(
             <div>
+                <div className = 'faq-button'>
+                    <Button onClick = {this.handleHomeRedirect}>
+                        Home
+                    </Button> 
+                </div>
                 <TitleHeader />
                 <Image src = 'https://www.shareicon.net/data/128x128/2016/09/26/835174_buildings_512x512.png'/>
                 <Hero className = 'housing-hero' color = 'white' >
@@ -66,7 +89,15 @@ class RoomAndBoard extends Component {
                     </Hero.Body>
                 </Hero>
                 <div className = 'housing-box'>
-                    <InputNumber className = 'input' value = {this.state.roomAndBoard} onChange = {(event) => this.handleTextChange(event)}></InputNumber>
+                    <InputNumber disabled = {this.state.roomAndBoardDisabled} className = 'input' value = {this.state.roomAndBoard} onChange = {(event) => this.handleTextChange(event)}></InputNumber>
+                </div>
+                <div className = 'tuition-flex-label'>
+                    {this.state.roomAndBoardDisabled ? 
+                    <label className = 'tuition-label'>Housing is currently not included in the estimate</label>
+                    :
+                    <label className = 'tuition-label'>Click below to leave housing out of the estimate</label>
+                }
+                    <Switch color="primary" onClick = {(event) => this.onRoomingSwitch(event)}/>
                 </div>
                 <div className = 'nav-button-container'>
                 <Button className = 'back-next-buttons' onClick = {this.onBackButton}>

@@ -41,9 +41,21 @@ class Subscriptions extends Component {
         this.props.history.push('/main/7');
     } 
 
+    handleHomeRedirect = () => {
+        if(window.confirm("Go back to the home page? All progress will be lost.")){
+            this.props.history.push('/')
+            window.location.reload();
+        }
+    }
+    
     render(){
         return(
             <div>
+                <div className = 'faq-button'>
+                    <Button onClick = {this.handleHomeRedirect}>
+                        Home
+                    </Button> 
+                </div>
                 <TitleHeader />
                 <div className = 'subscription-header'>
                     <Heading style = {{'textAlign':'center'}}>Subscription Time!</Heading>

@@ -14,10 +14,19 @@ class Home extends Component{
         this.props.history.push('/main');
     }
 
+    handleFaq = () => {
+        this.props.history.push('/main/faq')
+    }
+
 
     render(){
         return(
             <div>
+                <div className = 'faq-button'>
+                    <Button onClick = {this.handleFaq}>
+                        FAQ
+                    </Button> 
+                </div>
                 <div style = {{'borderBottom':'3px solid rgb(82, 82, 82)','justifyContent':'center','display':'flex','marginLeft':'auto','marginRight':'auto'}}>
                     <img style = {{'paddingTop':'2em','paddingBottom':'2em','height':'50%','width':'50%'}} src = {titleicon} alt = 'awefaefw'/>
                 </div>

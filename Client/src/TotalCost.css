@@ -37,6 +37,29 @@
     padding:.5em;
 }
 
+.total-cost-1{
+    background-color:rgb(255, 137, 137);
+}
+
+.total-cost-2{
+    background-color:rgb(255, 230, 183);
+}
+
+.total-cost-3{
+    background-color:rgb(255, 255, 208);
+}
+
+.total-cost-4{
+    background-color:rgb(196, 252, 196);
+}
+
+.total-cost-5{
+    background-color:rgb(138, 138, 255);
+}
+
+.total-cost-6{
+    background-color:rgb(255, 206, 255);
+}
 
 .college-inflation-section p{
     text-align: center;
