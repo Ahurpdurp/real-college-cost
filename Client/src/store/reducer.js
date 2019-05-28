@@ -83,6 +83,10 @@ const reducer = (state = initialState, action) => {
                 total:state.tuitionTotal + state.roomingTotal + state.textbookTotal + state.laptopTotal + state.foodTotal +  state.restaurantTotal + state.phoneTotal + state.internetTotal + state.spotifyTotal + state.amazonPrimeTotal + state.netflixTotal
                 + action.drinkTotal + action.alcoholTotal + action.clubTotal + action.clothingTotal + action.videoTotal + action.customTotal
             }
+        case 'SEARCH_AGAIN':
+            return{
+                ...initialState
+            }
         default:
             return{
                 ...state

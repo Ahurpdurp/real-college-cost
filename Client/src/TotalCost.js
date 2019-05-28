@@ -19,10 +19,23 @@ class TotalCost extends Component{
     }
     componentDidMount(){
         window.scrollTo(0, 0)
+        if(this.props.tuitionTotal !== 0){
+            this.setState({
+                tuitionTotalGraph: this.props.tuitionTotal
+            })
+        }
+
+        if(this.props.roomingTotal !== 0){
+            this.setState({
+                roomingTotalGraph:this.props.roomingTotal
+            })
+        }
     }
 
     onHomeScreenRedirect = () => {
         this.props.history.push('/main');
+        window.location.reload();
+
     }
     
     handleHomeRedirect = () => {
@@ -49,13 +62,7 @@ class TotalCost extends Component{
         let fourYearNonTuition = (nonTuitionTotal + nonTuitionTotal * 1.02 + nonTuitionTotal * 1.0404 + nonTuitionTotal * 1.061208).toFixed(2)
         let fourYearCompleteTotal = (parseFloat(fourYearNonTuition) + parseFloat(fourYearTuition))
 
-        if(this.props.tuitionTotal !== 0){
-            this.state.tuitionTotalGraph = this.props.tuitionTotal
-        }
 
-        if(this.props.roomingTotal !== 0){
-            this.state.roomingTotalGraph = this.props.roomingTotal
-        }
 
         return(
             <div>
@@ -199,6 +206,7 @@ class TotalCost extends Component{
                     <h1>So without further ado, your grand grand total is....</h1>
                 </div>
                 <Heading className = 'college-total'><b>${fourYearCompleteTotal.toLocaleString()}</b></Heading>
+                <Heading className = 'life-after' subtitle><a href = '#'>What's your life after college looking like?</a></Heading>
                 <div className = 'search-again-button-container'>
                 <Button className = 'search-again-button' onClick = {this.onHomeScreenRedirect}>Search Again!</Button>
                 </div>

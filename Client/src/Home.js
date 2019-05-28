@@ -10,6 +10,15 @@ import './Home.css'
 
 class Home extends Component{
 
+    constructor(props){
+        super(props)
+        console.log(window.FB)
+        this.state = {
+            isLoggedIn: false,
+            firstName: '',
+            userId:''
+        }
+    }
     handleSearchRedirect = () => {
         this.props.history.push('/main');
     }
@@ -18,14 +27,57 @@ class Home extends Component{
         this.props.history.push('/main/faq')
     }
 
+    componentDidMount(){
+        // var accessToken = ''
+        // window.FB.getLoginStatus(function(response) {
+        //     console.log(response)
+        //     if (response.status === 'connected') {
+        //         accessToken = response.authResponse.accessToken
+        //         window.FB.api('/me?fields=first_name,last_name,email', {fields: '' }, {  access_token : accessToken }, function(response) {
+        //             console.log(response.first_name);
+        //             console.log(response.id)
+        //             this.setState({
+        //                 firstName:response.first_name,
+        //                 userId:response.id
+        //             })
+        //         })
+        //     }
+        // });
+    }
+
+    onFacebookLogin = () => {
+        console.log('test')
+    //     console.log('test')
+    //     if (loginStatus === true) {
+    //         console.log(resultObject)
+    //         console.log('test')
+    //       this.setState({
+    //         isLoggedIn: true
+    //       });
+    //     } else {
+    //       alert('Facebook login error');
+    //     }
+      }
+      
+    onFacebookLogout = () => {
+        window.FB.logout(function(response) {
+            console.log(response)
+          });
+          this.setState({
+              isLoggedIn: false
+          })
+    }
 
     render(){
         return(
             <div>
                 <div className = 'faq-button'>
                     <Button onClick = {this.handleFaq}>
-                        FAQ
+                        FAQ {this.state.firstName}
                     </Button> 
+                    <Button onClick = {this.onFacebookLogout}>
+                        Logout
+                    </Button>
                 </div>
                 <div style = {{'borderBottom':'3px solid rgb(82, 82, 82)','justifyContent':'center','display':'flex','marginLeft':'auto','marginRight':'auto'}}>
                     <img style = {{'paddingTop':'2em','paddingBottom':'2em','height':'50%','width':'50%'}} src = {titleicon} alt = 'awefaefw'/>
@@ -40,6 +92,14 @@ class Home extends Component{
                 </Container>
             </Hero.Body>
         </Hero>
+        {!this.state.isLoggedIn
+            ?
+            <div className = 'login-container'>
+                    <button onClick = {this.onFacebookLogin} className="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></button>
+            </div>
+            :
+            <div>hi</div>
+        }
         <Content className = 'description' >
             <p>
                 When thinking about the cost of college, tuition isn't the whole picture (unfortunately). This website is intended to 

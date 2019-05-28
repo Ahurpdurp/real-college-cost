@@ -22,7 +22,7 @@ class Faq extends Component{
                 </div>
                 <div className = 'faq-container'>
                     <p>Absolutely not. As someone who attended a fairly expense college (Rice University), the purpose of this website is to give an <i>honest</i> outlook 
-                    at the total cost of college. I've worked as a part-time SAT/ACT and College Prep tutor for years now - I created this so that people would know exactly what was to be expected.
+                    at the total cost of college. I've worked as a part-time SAT/ACT and College Prep tutor for years now and have always encouraged students to attend college - I created this so that people would know exactly what was to be expected.
                     </p>
                 </div>
                 <div className = 'faq-container'>
@@ -31,7 +31,7 @@ class Faq extends Component{
                 <div className = 'faq-container'>
                     <p>The estimates for tuition and housing that you see pre-filled come from College Scorecard (<a target = '_blank' rel="noopener noreferrer" href = 'https://collegescorecard.ed.gov/data/documentation/'>Source</a>). 
                     Everything else is just my ballpark estimate. For example, grocery costs are <i>fairly</i> consistent, regardless of where you live. So that's why there's a pre-filled estimate. For other things, like clothing, it's really hard to get a 
-                    comprehensive estimate for everyone, so I just leave that blank for each person to fill out. 
+                    comprehensive estimate for everyone, so I just leave that blank for each person to fill out. There isn't data for every college, so if you select one of those colleges, you'll have to fill out your own stuff.
                     </p>
                 </div>
                 <div className = 'faq-container'>

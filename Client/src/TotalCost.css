@@ -121,7 +121,11 @@ a { color: inherit; }
     background-color:rgb(25, 158, 25);
     font-family: 'Ubuntu', sans-serif;
     border-radius:10px;
+}
 
+.life-after {
+    padding-top:1em;
+    padding-bottom:1em;
 }
 
 @media screen and (max-width:700px){

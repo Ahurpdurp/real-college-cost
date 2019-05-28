@@ -1,6 +1,6 @@
 
 .faq-button .button {
-    width:5%; 
+    width:60px; 
     background-color:rgb(131, 197, 197);
     color:white;
     border-color:rgba(255, 255, 255, 0);
@@ -11,7 +11,12 @@
     transform:scale(1.05)
 }
 
-
+.login-container{
+    display:flex;
+    justify-content: center;
+    margin-top:2em;
+    margin-bottom:2em;
+}
 
 .faq-button {
     height:0
