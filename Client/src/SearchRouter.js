@@ -13,24 +13,34 @@ import TotalCost from './TotalCost.js'
 import StateLocation from './StateLocation.js';
 import "./SearchRouter.css"
 import Faq from './Faq.js'
+import Home from './Home.js'
+import TopNavbar from './Navbar.js'
 
 class Main extends Component{
     
+    onLeaveCheck = () => {
+        
+    }
+
     render(){
         return(
-        <div className = 'body-container'>
+        <div>
             <BrowserRouter>
+            <TopNavbar />
                 <Switch>
-                    <Route exact path = {this.props.match.path} component={Search}/>
-                    <Route exact path = {`${this.props.match.path}/state`} component = {StateLocation} />
-                    <Route exact path = {`${this.props.match.path}/2`} component = {Tuition} />
-                    <Route exact path = {`${this.props.match.path}/3`} component = {RoomAndBoard} />
-                    <Route exact path = {`${this.props.match.path}/4`} component = {Textbooks} />
-                    <Route exact path = {`${this.props.match.path}/5`} component = {Monthly} />
-                    <Route exact path = {`${this.props.match.path}/6`} component = {Subscriptions} />
-                    <Route exact path = {`${this.props.match.path}/7`} component = {Misc} />
+                    <Route exact path='/' component={Home}/>
+                    <div className = 'body-container'>
+                    <Route exact path = '/main' component={Search}/>
+                    <Route exact path = '/main/state' component = {StateLocation} />
+                    <Route exact path = '/main/2' component = {Tuition} />
+                    <Route exact path = '/main/3' component = {RoomAndBoard} />
+                    <Route exact path = '/main/4' component = {Textbooks} />
+                    <Route exact path = '/main/5' component = {Monthly} />
+                    <Route exact path = '/main/6' component = {Subscriptions} />
+                    <Route exact path = '/main/7' component = {Misc} />
                     <Route exact path = '/main/total' component = {TotalCost} />
-                    <Route path = '/main/faq' component={Faq} />
+                    <Route path = '/main/faq' component={Faq} />                        
+                    </div>
                 </Switch>   
             </BrowserRouter>   
         </div>

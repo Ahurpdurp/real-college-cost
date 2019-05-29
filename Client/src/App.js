@@ -6,6 +6,7 @@ import Login from './Login.js'
 import Home from './Home.js'
 import SearchRouter from './SearchRouter.js';
 import './NavButtons.css'
+import TopNavbar from './Navbar.js'
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
       <BrowserRouter>
       <Switch>
           <Route exact path = '/login' component = {Login}></Route>
-          <Route exact path='/' component={Home}/>
-          <Route path ='/main' component={SearchRouter}/>
+          {/* <Route exact path='/' component={Home}/> */}
+          <Route path ='/' component={SearchRouter}/>
       </Switch>   
       </BrowserRouter>   
       <h5 className = 'footer-text'>Made By <a rel="noopener noreferrer" target = '_blank' href = 'https://paul-wu.net'>Paul Wu</a>. © 2019</h5>

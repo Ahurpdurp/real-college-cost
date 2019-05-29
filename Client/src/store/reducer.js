@@ -1,4 +1,6 @@
 const initialState = {
+    userName: '',
+    userId:null,
     schoolName: '',
     stateStatus:'out_of_state',
     schoolType:'',
@@ -24,6 +26,12 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
+        case 'ADD_USERNAME' :
+            return {
+                ...state,
+                userName:action.userName,
+                userId:action.userId
+            }
         case 'SELECT_COLLEGE':
             return{
                 ...state,

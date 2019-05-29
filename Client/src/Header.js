@@ -7,7 +7,11 @@ class TitleHeader extends Component{
     render(){
         return(
             <div className = 'header-header'>
-                <Heading size = {5} className = 'header'>RealCollegeCost</Heading>
+                {this.props.userName === '' ? 
+                    <Heading size = {5} className = 'header'>RealCollegeCost</Heading>
+                    :
+                    <Heading size = {5} className = 'header'>{this.props.userName}'s RealCollegeCost</Heading>            
+                }
                 <Heading style = {{'textAlign':'center','color':'grey'}}subtitle>Current Total: ${this.props.total.toLocaleString()}</Heading>
             </div>
         )
@@ -16,7 +20,8 @@ class TitleHeader extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        total: state.total
+        total: state.total,
+        userName:state.userName
     }
 }
 

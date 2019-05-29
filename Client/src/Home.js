@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import Hero from 'react-bulma-components/lib/components/hero';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Container from 'react-bulma-components/lib/components/container';
@@ -49,11 +50,16 @@ class Home extends Component{
         window.FB.login(function(response) {
             if (response.status === 'connected') {
              console.log(response)
-             console.log('hi')
+             console.log('hehe')
+            let accessToken = response.authResponse.accessToken
+            window.FB.api('/me?fields=first_name,last_name,email', {fields: '' }, {  access_token : accessToken }, function(response) {
+                console.log(response.first_name);
+                this.props.onAddUsername(response.first_name, response.id)
+            }.bind(this))
             } else {
               // The person is not logged into this app or we are unable to tell. 
             }
-          });
+          }.bind(this));
 
     //     console.log('test')
     //     if (loginStatus === true) {
@@ -79,14 +85,6 @@ class Home extends Component{
     render(){
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleFaq}>
-                        FAQ {this.state.firstName}
-                    </Button> 
-                    <Button onClick = {this.onFacebookLogout}>
-                        Logout
-                    </Button>
-                </div>
                 <div style = {{'borderBottom':'3px solid rgb(82, 82, 82)','justifyContent':'center','display':'flex','marginLeft':'auto','marginRight':'auto'}}>
                     <img style = {{'paddingTop':'2em','paddingBottom':'2em','height':'50%','width':'50%'}} src = {titleicon} alt = 'awefaefw'/>
                 </div>
@@ -95,11 +93,13 @@ class Home extends Component{
                 <Container>
                 <Heading className = 'home-header-title' style = {{'textAlign':'center'}} size = {1}><u>RealCollegeCost</u></Heading>
                 <Heading style = {{'paddingTop':'3em','textAlign':'center'}} subtitle size={4}>
-                    College's expensive. Let's plan ahead. 
+                    College's expensive. Let's plan ahead.
                 </Heading>
                 </Container>
             </Hero.Body>
         </Hero>
+        {this.props.userName === "" ? 
+        <div>
             <Heading subtitle>
                 Log in through one of the three options below to save your results!
             </Heading>
@@ -108,6 +108,9 @@ class Home extends Component{
                 <img alt = 'google-plus-login' src = 'https://image.flaticon.com/icons/svg/174/174851.svg'/>
                 <img alt = 'twitter-login-icon' src = 'https://image.flaticon.com/icons/svg/174/174876.svg'/>
             </div>
+        </div>
+            : <Heading subtitle>Welcome, {this.props.userName}</Heading>
+        }
         <Content className = 'description' >
             <p>
                 When thinking about the cost of college, tuition isn't the whole picture (unfortunately). This website is intended to 
@@ -151,4 +154,17 @@ class Home extends Component{
     }
 }
 
-export default Home 
+
+const mapStateToProps = (state) => {
+    return {
+        userName:state.userName
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      onAddUsername: (userName, userId) => dispatch({type: 'ADD_USERNAME', userName:userName, userId: userId})
+    }
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home)

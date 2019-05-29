@@ -5,7 +5,7 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import './Search.css'
 import TitleHeader from './Header.js'
 import Button from 'react-bulma-components/lib/components/button';
-
+import "./SearchRouter.css"
 class Search extends Component {
     constructor(){
         super()
@@ -36,7 +36,7 @@ class Search extends Component {
     handleHomeRedirect = () => {
         if(window.confirm("Go back to the home page? All progress will be lost.")){
             this.props.history.push('/')
-            window.location.reload();
+            // window.location.reload();
         }
     }
 
