@@ -35,6 +35,16 @@ class Faq extends Component{
                     </p>
                 </div>
                 <div className = 'faq-container'>
+                    <h2>What does logging in actually do?</h2>
+                </div>
+                <div className = 'faq-container'>
+                    <p>
+                        Logging in allows you to save your results. If you want to compare different colleges or see your past results, then log in. If not,
+                        you can still use everything - you just can't save your results. Why are you only allowed to log in through Facebook or Twitter? Well...to be honest who the heck's going to use 
+                        the login feature if they have to create their own username and special password? No one has time for that :)
+                    </p>
+                </div>
+                <div className = 'faq-container'>
                     <h2>Something's bugged/the website broke.</h2>
                 </div>
                 <div className = 'faq-container'>

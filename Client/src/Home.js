@@ -95,7 +95,7 @@ class Home extends Component{
         {!this.state.isLoggedIn
             ?
             <div className = 'login-container'>
-                    <button onClick = {this.onFacebookLogin} className="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></button>
+                <div class="fb-login-button" onlogin = {this.onFacebookLogin} data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="true"></div>            
             </div>
             :
             <div>hi</div>
