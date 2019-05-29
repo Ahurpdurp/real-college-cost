@@ -46,7 +46,15 @@ class Home extends Component{
     }
 
     onFacebookLogin = () => {
-        console.log('test')
+        window.FB.login(function(response) {
+            if (response.status === 'connected') {
+             console.log(response)
+             console.log('hi')
+            } else {
+              // The person is not logged into this app or we are unable to tell. 
+            }
+          });
+
     //     console.log('test')
     //     if (loginStatus === true) {
     //         console.log(resultObject)
@@ -92,14 +100,14 @@ class Home extends Component{
                 </Container>
             </Hero.Body>
         </Hero>
-        {!this.state.isLoggedIn
-            ?
-            <div className = 'login-container'>
-                <div class="fb-login-button" onlogin = {this.onFacebookLogin} data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="true"></div>            
+            <Heading subtitle>
+                Log in through one of the three options below to save your results!
+            </Heading>
+            <div className = 'login-icon-container'>
+                <img onClick = {(this.onFacebookLogin)} alt = 'facebook-login-icon' src = 'https://image.flaticon.com/icons/svg/733/733547.svg'/>
+                <img alt = 'google-plus-login' src = 'https://image.flaticon.com/icons/svg/174/174851.svg'/>
+                <img alt = 'twitter-login-icon' src = 'https://image.flaticon.com/icons/svg/174/174876.svg'/>
             </div>
-            :
-            <div>hi</div>
-        }
         <Content className = 'description' >
             <p>
                 When thinking about the cost of college, tuition isn't the whole picture (unfortunately). This website is intended to 

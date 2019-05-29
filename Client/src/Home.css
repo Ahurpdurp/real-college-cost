@@ -11,16 +11,27 @@
     transform:scale(1.05)
 }
 
-.login-container{
+.login-icon-container{
     display:flex;
     justify-content: center;
     margin-top:2em;
     margin-bottom:2em;
 }
 
+.login-icon-container img {
+    width:20%;
+    transition: 0.2s;
+}
+
+.login-icon-container img:hover {
+    cursor: pointer;
+    transform:scale(1.1)
+}
+
 .faq-button {
     height:0
 }
+
 
 .description p {
     padding-top:4em;
