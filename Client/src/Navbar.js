@@ -50,6 +50,7 @@ class TopNavbar extends Component{
             <div className = 'nav-container'>
                 <Button onClick = {() => this.routeRedirect('/')}>Home</Button>
                 <Button onClick = {() => this.routeRedirect('/main/faq')}>FAQ</Button>
+                {this.props.userId ? <Button>Saved Entries</Button> : null}
                 {this.props.userId ? <Button onClick = {this.onFacebookLogout}>Logout</Button> :<Popup trigger = {<Button>Login</Button>}>
                     <div>
                         <h5>Click on one of the three icons below to log in!</h5>

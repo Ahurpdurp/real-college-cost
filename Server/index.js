@@ -35,6 +35,16 @@ app.post('/add-college', (req,res) => {
   })
 })
 
+app.get('/view-colleges' , (req,res) => {
+  models.SavedResults.findAll({
+    where: {
+        userId: '10219865044842271'
+    }
+  })
+  .then(result => {
+    res.json({result:result})
+  })
+})
 
 app.listen(8080, () => {
     console.log('SERVER RUNNING WOOO')
