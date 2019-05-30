@@ -7,6 +7,7 @@ import TitleHeader from './Header.js'
 import InputNumber from 'react-input-just-numbers';
 import Box from 'react-bulma-components/lib/components/box';
 import './Monthly.css'
+import { parse } from '@babel/core';
 
 class Monthly extends Component {
     constructor(props){
@@ -15,7 +16,9 @@ class Monthly extends Component {
             foodCost:this.props.foodTotal,
             phoneCost:this.props.phoneTotal,
             internetCost:this.props.internetTotal,
-            restaurantCost:this.props.restaurantTotal
+            restaurantCost:this.props.restaurantTotal,
+            healthCost:this.props.healthTotal,
+            carMaintCost:this.props.carMaintTotal
         }
     }
 
@@ -34,29 +37,19 @@ class Monthly extends Component {
     }
 
     onEstimateTotal = () => {
-        let foodTotal = parseInt(this.state.foodCost)
-        let restaurantTotal = parseInt(this.state.restaurantCost)
-        let phoneTotal = parseInt(this.state.phoneCost)
-        let internetTotal = parseInt(this.state.internetCost)
-        this.props.onAddTotal(foodTotal,restaurantTotal,phoneTotal,internetTotal)
+        let foodTotal = parseInt(this.state.foodCost) || 0
+        let restaurantTotal = parseInt(this.state.restaurantCost) || 0
+        let phoneTotal = parseInt(this.state.phoneCost) || 0
+        let internetTotal = parseInt(this.state.internetCost) || 0
+        let healthTotal = parseInt(this.state.healthCost) || 0
+        let carMaintTotal = parseInt(this.state.carMaintCost) || 0
+        this.props.onAddTotal(foodTotal,restaurantTotal,phoneTotal,internetTotal,healthTotal,carMaintTotal)
         this.props.history.push('/main/6');
     } 
-
-    handleHomeRedirect = () => {
-        if(window.confirm("Go back to the home page? All progress will be lost.")){
-            this.props.history.push('/')
-            window.location.reload();
-        }
-    }
 
     render(){
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleHomeRedirect}>
-                        Home
-                    </Button> 
-                </div>
                 <TitleHeader />
                 <Heading className = 'monthly-title'>
                 Let's take care of some life costs.
@@ -94,6 +87,23 @@ class Monthly extends Component {
                     </p>
                     <InputNumber className = 'input' value = {this.state.internetCost} onChange = {(event) => this.handleTextChange(event, "internetCost")}></InputNumber>
                 </Box>
+                <Box className = 'health monthly-flex-item'>
+                <img alt = 'wifi-icon' src = 'https://image.flaticon.com/icons/svg/809/809957.svg' />
+                    <p>
+                    Let's think about health costs. According ot the American College Health Association, the average student spends about $2,000 a year on health insurance (<a rel="noopener noreferrer" href = 'https://www.acha.org/ACHA/Networks/Committees/SHIBP_Coalition.aspx'>Source</a>), so that's 
+                    the number we'll use for our estimate. If you have other medicinal costs, make sure to add the annual cost of it to this total.
+                    </p>
+                    <InputNumber className = 'input' value = {this.state.healthCost} onChange = {(event) => this.handleTextChange(event, "healthCost")}></InputNumber>
+                </Box>
+                <Box className = 'car monthly-flex-item'>
+                <img alt = 'wifi-icon' src = 'https://image.flaticon.com/icons/svg/1514/1514344.svg' />
+                    <p>
+                    We already had a car cost section, but that was for the car itself. The main costs are insurance, gas, and maintenance. Insurance for a college student will be around $300 a month, so about $3,600 a year. Gas will be about $1,500 a month, and 
+                    you should always put aside about $500 a year for maintenance, inspection, registration, etc. That's roughly <u>$5,600</u> a year for car costs. The default value will be 0 because many students won't own cars. If you know you're going to be paying for everything,
+                    $5,600 is a good estimate to put down. 
+                    </p>
+                    <InputNumber className = 'input' value = {this.state.carMaintCost} onChange = {(event) => this.handleTextChange(event, "carMaintCost")}></InputNumber>
+                </Box>
                 <div className = 'nav-button-container'>
                 <Button className = 'back-next-buttons' onClick = {this.onBackButton}>
                     <b>Back</b>
@@ -115,12 +125,14 @@ const mapStateToProps = (state) => {
         restaurantTotal:state.restaurantTotal,
         phoneTotal:state.phoneTotal,
         internetTotal:state.internetTotal,
+        healthTotal:state.healthTotal,
+        carMaintTotal:state.carMaintTotal
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onAddTotal: (foodTotal,restaurantTotal,phoneTotal,internetTotal) => dispatch({type: 'ADD_MONTHLY_TOTAL', foodTotal:foodTotal,restaurantTotal:restaurantTotal,phoneTotal:phoneTotal,internetTotal:internetTotal})
+      onAddTotal: (foodTotal,restaurantTotal,phoneTotal,internetTotal,healthTotal,carMaintTotal) => dispatch({type: 'ADD_MONTHLY_TOTAL', foodTotal:foodTotal,restaurantTotal:restaurantTotal,phoneTotal:phoneTotal,internetTotal:internetTotal, healthTotal:healthTotal,carMaintTotal:carMaintTotal})
     }
   }
 

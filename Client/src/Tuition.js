@@ -18,7 +18,7 @@ class Tuition extends Component {
             tuitionButton:'',
             parentIncome:this.props.tuitionTotal,
             results:[],
-            baseTuition:'',
+            baseTuition:0,
             tuitionDisabled:false
         }
     }
@@ -33,9 +33,12 @@ class Tuition extends Component {
         fetch(URL)
         .then(response => response.json())
         .then(results => {
-            this.setState({
-                baseTuition:results.results[0][`latest.cost.tuition.${stateStatus}`]
-            })
+            if(results.results[0][`latest.cost.tuition.${stateStatus}`])
+            {
+                this.setState({
+                    baseTuition:results.results[0][`latest.cost.tuition.${stateStatus}`]
+                })
+            }
         })
         .then(() => {
         if(this.props.stateStatus === 'in_state'){
@@ -77,7 +80,7 @@ class Tuition extends Component {
     onEstimateTotal = () => {
         let tuitionTotal = 0
         if(!this.state.tuitionDisabled){
-            tuitionTotal = parseInt(this.state.parentIncome)     
+            tuitionTotal = parseInt(this.state.parentIncome) || 0     
         }
         this.props.onAddTotal(tuitionTotal)
         this.props.history.push('/main/3');
@@ -89,21 +92,10 @@ class Tuition extends Component {
         })
     }
     
-    handleHomeRedirect = () => {
-        if(window.confirm("Go back to the home page? All progress will be lost.")){
-            this.props.history.push('/')
-            window.location.reload();
-        }
-    }
 
     render(){
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleHomeRedirect}>
-                        Home
-                    </Button> 
-                </div>
                 <TitleHeader />
                 {this.props.stateStatus !== 'in_state' ?
                 <div>

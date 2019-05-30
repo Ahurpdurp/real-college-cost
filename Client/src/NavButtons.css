@@ -1,6 +1,7 @@
 .nav-button-container {
     display:flex;
     justify-content: center;
+    transition:.2s;
 }
 
 .back-next-buttons {

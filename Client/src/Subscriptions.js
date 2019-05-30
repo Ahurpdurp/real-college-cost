@@ -34,28 +34,16 @@ class Subscriptions extends Component {
     }
 
     onEstimateTotal = () => {
-        let spotifyTotal = parseInt(this.state.spotifyCost)
-        let amazonPrimeTotal = parseInt(this.state.amazonPrimeCost)
-        let netflixTotal = parseInt(this.state.netflixCost)
+        let spotifyTotal = parseInt(this.state.spotifyCost) || 0
+        let amazonPrimeTotal = parseInt(this.state.amazonPrimeCost) || 0
+        let netflixTotal = parseInt(this.state.netflixCost) || 0
         this.props.onAddTotal(spotifyTotal,amazonPrimeTotal,netflixTotal)
         this.props.history.push('/main/7');
     } 
 
-    handleHomeRedirect = () => {
-        if(window.confirm("Go back to the home page? All progress will be lost.")){
-            this.props.history.push('/')
-            window.location.reload();
-        }
-    }
-    
     render(){
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleHomeRedirect}>
-                        Home
-                    </Button> 
-                </div>
                 <TitleHeader />
                 <div className = 'subscription-header'>
                     <Heading style = {{'textAlign':'center'}}>Subscription Time!</Heading>

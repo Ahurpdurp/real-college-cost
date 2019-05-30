@@ -12,7 +12,8 @@ class Textbooks extends Component {
         super(props)
         this.state = {
             textbookCost:this.props.textbookTotal,
-            laptopCost:this.props.laptopTotal
+            laptopCost:this.props.laptopTotal,
+            carCost:this.props.carTotal
         }
     }
 
@@ -30,27 +31,17 @@ class Textbooks extends Component {
         this.props.history.push('/main/3');
     }
     onEstimateTotal = () => {
-        let textbookTotal = parseInt(this.state.textbookCost)
-        let laptopTotal = parseInt(this.state.laptopCost)
-        this.props.onAddTotal(textbookTotal,laptopTotal)
+        let textbookTotal = parseInt(this.state.textbookCost) || 0
+        let laptopTotal = parseInt(this.state.laptopCost) || 0
+        let carTotal = parseInt(this.state.carCost) || 0
+        this.props.onAddTotal(textbookTotal,laptopTotal,carTotal)
         this.props.history.push('/main/5');
     } 
 
-    handleHomeRedirect = () => {
-        if(window.confirm("Go back to the home page? All progress will be lost.")){
-            this.props.history.push('/')
-            window.location.reload();
-        }
-    }
     
     render(){
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleHomeRedirect}>
-                        Home
-                    </Button> 
-                </div>
                 <TitleHeader />
                 <div className = 'textbook-message-containers'>
                 <Message className = 'textbook-laptop message is-success'>
@@ -72,6 +63,16 @@ class Textbooks extends Component {
                     <InputNumber className = 'textbook-input input' value = {this.state.laptopCost} onChange = {(event) => this.handleTextChange(event, "laptopCost")}></InputNumber>
                 </Message.Body>
                 </Message>
+                <Message className = 'textbook-laptop message is-info'>
+                <Message.Header className = 'textbook-header'>
+                    <h1>Car.</h1>
+                </Message.Header>
+                <Message.Body className = 'textbook-body'>
+                    <p>Depending on the college you go to, you may need a car on a daily basis, or you might not even ride one ever. What's hard about this estimate is that the number can range by <i>a lot.</i> Since this isn't a car estimator, 
+                    you're going to have to do your own research on this. If you're taking a loan, make sure to account for the cost of repayment for a year. If you don't want to think about, just leave it blank.</p>
+                    <InputNumber className = 'textbook-input input' value = {this.state.carCost} onChange = {(event) => this.handleTextChange(event, "carCost")}></InputNumber>
+                </Message.Body>
+                </Message>
                 </div>
                 <div className = 'nav-button-container'>
                 <Button className = 'back-next-buttons' onClick = {this.onBackButton}>
@@ -91,13 +92,14 @@ const mapStateToProps = (state) => {
         total: state.total,
         schoolId:state.schoolId,
         textbookTotal:state.textbookTotal,
-        laptopTotal:state.laptopTotal
+        laptopTotal:state.laptopTotal,
+        carTotal:state.carTotal
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onAddTotal: (textbookTotal,laptopTotal) => dispatch({type: 'ADD_TEXTBOOK_TOTAL', textbookTotal:textbookTotal,laptopTotal:laptopTotal})
+      onAddTotal: (textbookTotal,laptopTotal,carTotal) => dispatch({type: 'ADD_TEXTBOOK_TOTAL', textbookTotal:textbookTotal,laptopTotal:laptopTotal,carTotal:carTotal})
     }
   }
 

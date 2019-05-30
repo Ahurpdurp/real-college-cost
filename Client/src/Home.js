@@ -98,7 +98,7 @@ class Home extends Component{
                 </Container>
             </Hero.Body>
         </Hero>
-        {this.props.userName === "" ? 
+        {/* {this.props.userName === "" ? 
         <div>
             <Heading subtitle>
                 Log in through one of the three options below to save your results!
@@ -110,7 +110,7 @@ class Home extends Component{
             </div>
         </div>
             : <Heading subtitle>Welcome, {this.props.userName}</Heading>
-        }
+        } */}
         <Content className = 'description' >
             <p>
                 When thinking about the cost of college, tuition isn't the whole picture (unfortunately). This website is intended to 

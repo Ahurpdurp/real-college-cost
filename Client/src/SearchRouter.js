@@ -19,7 +19,8 @@ import TopNavbar from './Navbar.js'
 class Main extends Component{
     
     onLeaveCheck = () => {
-        
+        if(window.confirm("Go back to the home page? All progress will be lost.")){
+        }
     }
 
     render(){

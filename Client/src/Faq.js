@@ -11,11 +11,6 @@ class Faq extends Component{
     render(){
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleFaq}>
-                        Home
-                    </Button> 
-                </div>
                 <h1 className = 'faq-header'>Frequetly Asked Questions:</h1>
                 <div className = 'faq-container'>
                     <h2>Is this website intended to discourage students from intending college?</h2>

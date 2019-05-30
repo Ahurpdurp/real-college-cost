@@ -6,6 +6,7 @@ import Card from 'react-bulma-components/lib/components/card';
 import Content from 'react-bulma-components/lib/components/content';
 import Button from 'react-bulma-components/lib/components/button';
 import './TotalCost.css'
+import axios from 'axios'
 import ReactMinimalPieChart from 'react-minimal-pie-chart'
 
 
@@ -14,7 +15,8 @@ class TotalCost extends Component{
         super()
         this.state = {
             tuitionTotalGraph:null,
-            roomingTotalGraph:null
+            roomingTotalGraph:null,
+            isSaved:false
         }
     }
     componentDidMount(){
@@ -37,21 +39,44 @@ class TotalCost extends Component{
         window.location.reload();
 
     }
-    
-    handleHomeRedirect = () => {
-        if(window.confirm("Go back to the home page? All progress will be lost.")){
-            this.props.history.push('/')
-            window.location.reload();
-        }
+
+    handleSaveResult = () => {
+        axios.post('http://localhost:8080/add-college',{
+            userName:this.props.userName,
+            userId:this.props.userId,
+            tuitionTotal:this.props.tuitionTotal,
+            roomingTotal:this.props.roomingTotal,
+            textbookTotal:this.props.textbookTotal,
+            laptopTotal:this.props.laptopTotal,
+            carTotal:this.props.carTotal,
+            foodTotal:this.props.foodTotal,
+            restaurantTotal:this.props.restaurantTotal,
+            phoneTotal:this.props.phoneTotal,
+            internetTotal:this.props.internetTotal,
+            healthTotal:this.props.healthTotal,
+            carMaintTotal:this.props.carMaintTotal,
+            spotifyTotal:this.props.spotifyTotal,
+            amazonPrimeTotal:this.props.amazonPrimeTotal,
+            netflixTotal:this.props.netflixTotal,
+            drinkTotal:this.props.drinkTotal,
+            alcoholTotal:this.props.alcoholTotal,
+            clubTotal:this.props.clubTotal,
+            clothingTotal:this.props.clothingTotal,
+            videoTotal:this.props.videoTotal,
+            customTotal:this.props.customTotal
+          })
+        this.setState({
+            isSaved:true
+        })
     }
 
     render(){
 
         let tuitionPercentage = (100 * this.props.tuitionTotal/this.props.total).toFixed(0)
         let roomingPercentage = (100 * this.props.roomingTotal/this.props.total).toFixed(0)
-        let textbookTotal = this.props.laptopTotal + this.props.textbookTotal
+        let textbookTotal = this.props.laptopTotal + this.props.textbookTotal + this.props.carTotal
         let textbookPercentage = (100 * textbookTotal/this.props.total).toFixed(0)
-        let monthlyTotal = this.props.foodTotal + this.props.restaurantTotal + this.props.internetTotal + this.props.phoneTotal
+        let monthlyTotal = this.props.foodTotal + this.props.restaurantTotal + this.props.internetTotal + this.props.phoneTotal + this.props.healthTotal + this.props.carMaintTotal
         let monthlyPercentage = (100 * monthlyTotal/this.props.total).toFixed(0)
         let subscriptionTotal = this.props.spotifyTotal + this.props.amazonPrimeTotal + this.props.netflixTotal
         let subscriptionPercentage = (100 * subscriptionTotal/this.props.total).toFixed(0)
@@ -62,15 +87,8 @@ class TotalCost extends Component{
         let fourYearNonTuition = (nonTuitionTotal + nonTuitionTotal * 1.02 + nonTuitionTotal * 1.0404 + nonTuitionTotal * 1.061208).toFixed(2)
         let fourYearCompleteTotal = (parseFloat(fourYearNonTuition) + parseFloat(fourYearTuition))
 
-
-
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleHomeRedirect}>
-                        Home
-                    </Button> 
-                </div>
                 <div className = 'total-cost-header'>
                     <Heading subtitle>Whew, finally done! For one year, your estimated cost for going to {this.props.schoolName} is: </Heading>
                     <Heading className = 'total-cost-value' style = {{'paddingTop':'.5em'}}>{this.props.total.toLocaleString()} Dollars!</Heading>
@@ -150,7 +168,7 @@ class TotalCost extends Component{
                     <Card.Content>            
                         <Heading size={4}>School Equipment</Heading>
                         <Content>
-                            School Equipment, aka laptop and textbooks. Totaled to <b>${textbookTotal.toLocaleString()}</b>, which is <b>{textbookPercentage}%</b> of the total.
+                            School Equipment, aka a laptop, textbooks, and maybe a car. Totaled to <b>${textbookTotal.toLocaleString()}</b>, which is <b>{textbookPercentage}%</b> of the total.
                         </Content>
                     </Card.Content>
                 </Card>
@@ -208,6 +226,11 @@ class TotalCost extends Component{
                 <Heading className = 'college-total'><b>${fourYearCompleteTotal.toLocaleString()}</b></Heading>
                 <Heading className = 'life-after' subtitle><a href = '#'>What's your life after college looking like?</a></Heading>
                 <div className = 'search-again-button-container'>
+                {!this.props.userId ? <Button className = 'saved-button'>Log In To Save</Button>   
+                :
+                this.state.isSaved ? <Button className = 'saved-button'>Saved!</Button>
+                : <Button className = 'save-button' inverted = {'true'} onClick = {this.handleSaveResult}>Save This Result</Button>
+                }
                 <Button className = 'search-again-button' onClick = {this.onHomeScreenRedirect}>Search Again!</Button>
                 </div>
             </div>
@@ -217,16 +240,21 @@ class TotalCost extends Component{
 
 const mapStateToProps = (state) => {
     return {
+        userName:state.userName,
+        userId:state.userId,
         total: state.total,
         schoolName:state.schoolName,
         tuitionTotal:state.tuitionTotal,
         roomingTotal:state.roomingTotal,
         textbookTotal:state.textbookTotal,
         laptopTotal:state.laptopTotal,
+        carTotal:state.carTotal,
         foodTotal:state.foodTotal,
         restaurantTotal:state.restaurantTotal,
         phoneTotal:state.phoneTotal,
         internetTotal:state.internetTotal,
+        healthTotal:state.healthTotal,
+        carMaintTotal:state.carMaintTotal,
         spotifyTotal:state.spotifyTotal,
         amazonPrimeTotal:state.amazonPrimeTotal,
         netflixTotal:state.netflixTotal,

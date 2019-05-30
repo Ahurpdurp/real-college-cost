@@ -118,9 +118,25 @@ a { color: inherit; }
 }
 
 .search-again-button{
-    background-color:rgb(25, 158, 25);
+    background-color:rgb(212, 72, 62);
     font-family: 'Ubuntu', sans-serif;
     border-radius:10px;
+}
+
+.save-button{
+    background-color:rgb(25, 158, 107);
+    font-family: 'Ubuntu', sans-serif;
+    border-radius:10px;
+}
+
+.saved-button{
+    background-color:rgb(115, 243, 194);
+    font-family: 'Ubuntu', sans-serif;
+    border-radius:10px;
+}
+
+.saved-button:hover{
+    cursor:auto;
 }
 
 .life-after {

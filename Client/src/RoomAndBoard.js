@@ -52,7 +52,7 @@ class RoomAndBoard extends Component {
     onEstimateTotal = () => {
         let roomingTotal = 0 
         if(!this.state.roomAndBoardDisabled){
-            roomingTotal = parseInt(this.state.roomAndBoard)
+            roomingTotal = parseInt(this.state.roomAndBoard) || 0
         }
         this.props.onAddTotal(roomingTotal)
         this.props.history.push('/main/4');

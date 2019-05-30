@@ -4,6 +4,7 @@ import 'react-bulma-components/lib/components/form';
 import Heading from 'react-bulma-components/lib/components/heading';
 import './Search.css'
 import TitleHeader from './Header.js'
+import { connect } from 'react-redux'
 import Button from 'react-bulma-components/lib/components/button';
 import "./SearchRouter.css"
 class Search extends Component {
@@ -17,6 +18,7 @@ class Search extends Component {
 
     componentDidMount(){
         window.scrollTo(0, 0)
+        this.props.deleteStateStatus()
     }
     
     onSearchChange = (e) => {
@@ -55,11 +57,6 @@ class Search extends Component {
     render(){
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleHomeRedirect}>
-                        Home
-                    </Button> 
-                </div>
                 <TitleHeader />
                 <Heading subtitle className = 'search-header'>
                     The first step is selecting a college. Let's get that out of the way. 
@@ -73,5 +70,11 @@ class Search extends Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+      deleteStateStatus: () => dispatch({type: 'RESET_STATE_STATUS', stateStatus:'out_of_state'})
+    }
+  }
 
-export default Search
+export default connect(null, mapDispatchToProps)(Search)
+

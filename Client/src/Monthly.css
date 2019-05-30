@@ -33,6 +33,15 @@
     background-color:rgb(201, 253, 251);
 }
 
+.health p {
+    background-color:rgb(201, 223, 253);
+
+}
+
+.car p {
+    background-color:rgb(247, 201, 253);
+}
+
 .monthly-flex-item .input {
     min-width:4em;
     margin-top:auto;

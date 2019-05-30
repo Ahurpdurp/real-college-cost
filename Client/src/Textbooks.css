@@ -1,11 +1,12 @@
 .textbook-message-containers {
     display:flex;   
+    flex-direction: column;
     min-height:300px;
     margin-top:4em;
 }
 
 .textbook-laptop{
-    width:40%;
+    width:60%;
     height:100%;
 }
 
@@ -21,7 +22,7 @@
 .textbook-input {
     margin-top:2em;
     width:20%;
-    margin-left:35%;
+    margin-left:40%;
 }
 
 .textbook-header{

@@ -6,7 +6,6 @@ import Login from './Login.js'
 import Home from './Home.js'
 import SearchRouter from './SearchRouter.js';
 import './NavButtons.css'
-import TopNavbar from './Navbar.js'
 
 function App() {
   return (

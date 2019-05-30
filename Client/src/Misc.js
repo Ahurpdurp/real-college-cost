@@ -38,38 +38,26 @@ class Misc extends Component {
     }
 
     onEstimateTotal = () => {
-        let drinkTotal = parseInt(this.state.drinkCost)
-        let alcoholTotal = parseInt(this.state.alcoholCost)
-        let clubTotal = parseInt(this.state.clubCost) 
-        let clothingTotal = parseInt(this.state.clothingCost)
-        let videoTotal = parseInt(this.state.videoCost)
-        let customTotal = parseInt(this.state.customCost)
+        let drinkTotal = parseInt(this.state.drinkCost) || 0
+        let alcoholTotal = parseInt(this.state.alcoholCost) || 0
+        let clubTotal = parseInt(this.state.clubCost)  || 0
+        let clothingTotal = parseInt(this.state.clothingCost) || 0
+        let videoTotal = parseInt(this.state.videoCost) || 0
+        let customTotal = parseInt(this.state.customCost) || 0
         this.props.onAddTotal(drinkTotal,alcoholTotal,clubTotal,clothingTotal,videoTotal,customTotal)
         this.props.history.push('/main/total');
     } 
-
-    handleHomeRedirect = () => {
-        if(window.confirm("Go back to the home page? All progress will be lost.")){
-            this.props.history.push('/')
-            window.location.reload();
-        }
-    }
-
+    
     render(){
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleHomeRedirect}>
-                        Home
-                    </Button> 
-                </div>
                 <TitleHeader />
                 <Heading className = 'misc-title' subtitle>
                     <b>Last Page</b> - we're in the end game now. College is all about having fun, so naturally the this whole page is dedicated to 
                     entertainment and recreational activities. 
                 </Heading>
                 <div className = 'grid-container'>
-                <Hero gradient className = 'misc-hero' color="primary">
+                <Hero className = 'misc-hero' color="primary">
                     <Hero.Body>
                         <Container>
                         <Heading size = {4}>Drinks/Starbucks/Boba/Snacks</Heading>
@@ -81,7 +69,7 @@ class Misc extends Component {
                         </Container>
                     </Hero.Body>
                 </Hero>
-                <Hero gradient className = 'misc-hero' color="success">
+                <Hero className = 'misc-hero' color="success">
                     <Hero.Body>
                         <Container>
                         <Heading size = {4}>Alcohol</Heading>
@@ -93,7 +81,7 @@ class Misc extends Component {
                         </Container>
                     </Hero.Body>
                 </Hero>
-                <Hero gradient className = 'misc-hero' color="info">
+                <Hero className = 'misc-hero' color="info">
                     <Hero.Body>
                         <Container>
                         <Heading size = {4}>Club Costs</Heading>
@@ -104,7 +92,7 @@ class Misc extends Component {
                         </Container>
                     </Hero.Body>
                 </Hero>
-                <Hero gradient className = 'misc-hero' color="link">
+                <Hero className = 'misc-hero' color="link">
                     <Hero.Body>
                         <Container>
                         <Heading size = {4}>Clothing/Makeup</Heading>
@@ -116,7 +104,7 @@ class Misc extends Component {
                         </Container>
                     </Hero.Body>
                 </Hero>
-                <Hero gradient className = 'misc-hero' color="light">
+                <Hero className = 'misc-hero' color="light">
                     <Hero.Body>
                         <Container>
                         <Heading size = {4}>Movies/Videogames/Other Media</Heading>
@@ -128,7 +116,7 @@ class Misc extends Component {
                         </Container>
                     </Hero.Body>
                 </Hero>
-                <Hero gradient className = 'misc-hero' color="dark">
+                <Hero className = 'misc-hero' color="dark">
                     <Hero.Body>
                         <Container>
                         <Heading size = {4}>Other Costs</Heading>
