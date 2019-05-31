@@ -12,7 +12,6 @@ class Results extends Component{
             this.props.history.push('/main/state');
         }
         else{
-            console.log(schoolType)
             this.props.onCollegeAddGlobal(schoolName,schoolId,'private')
             this.props.history.push('/main/2');
         }

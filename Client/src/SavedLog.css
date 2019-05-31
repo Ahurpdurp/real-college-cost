@@ -69,11 +69,16 @@ ul {
     .big-saved-div{
         padding:0em;
         padding-top:1em;
+        padding-bottom:1em;
     }
     .saved-container{
-        width:95%;
-        margin-left:0;
+        width:100%;
+        margin-left:-1em;
         margin-right:0;
+    }
+
+    .saved-big-flex{
+        padding:.2em;
     }
     .saved-flex {
         display:flex;
@@ -84,5 +89,16 @@ ul {
     .saved-flex p {
         margin-left:.5em;
         margin-right:.5em;
+        margin-top:-.2em;
+    }
+
+    .saved-header {
+        font-size:1em;
+        margin-bottom:0;
+    }
+
+    .saved-big-flex{
+        margin:1em;
+        padding:.5em;
     }
 }

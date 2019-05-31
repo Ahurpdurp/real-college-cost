@@ -40,7 +40,7 @@ class TotalCost extends Component{
     }
 
     handleSaveResult = (fourYearTotal) => {
-        axios.post('http://localhost:8080/add-college',{
+        axios.post('https://realcollegecost.herokuapp.com/add-college',{
             userName:this.props.userName,
             userId:this.props.userId,
             schoolName:this.props.schoolName,

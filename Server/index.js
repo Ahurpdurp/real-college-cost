@@ -3,7 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const models = require('./models')
-
+const PORT = process.env.PORT || 8080
 app.use(cors())
 app.use(bodyParser.json())
 
@@ -70,6 +70,6 @@ app.post('/remove-entry', (req,res) => {
   })
 })
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
     console.log('SERVER RUNNING WOOO')
 })

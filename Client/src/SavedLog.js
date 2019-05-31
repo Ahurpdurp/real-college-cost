@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Heading from 'react-bulma-components/lib/components/heading';
 import './SavedLog.css'
 import { connect } from 'react-redux'
 import Button from 'react-bulma-components/lib/components/button';
@@ -14,11 +13,9 @@ class SavedLog extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props.userId)
-        fetch(`http://localhost:8080/view-colleges/${this.props.userId}`)
+        fetch(`https://realcollegecost.herokuapp.com/view-colleges/${this.props.userId}`)
         .then(results => results.json())
         .then(json => {
-            console.log(json)
             this.setState({
                 results:json.result
             })
@@ -26,14 +23,13 @@ class SavedLog extends Component {
     }
 
     handleRemoveEntry = (postId) => {
-        axios.post('http://localhost:8080/remove-entry',{
+        axios.post('https://realcollegecost.herokuapp.com/remove-entry',{
             postId:postId
           })
         .then((res) => {
-            fetch(`http://localhost:8080/view-colleges/${this.props.userId}`)
+            fetch(`https://realcollegecost.herokuapp.com/view-colleges/${this.props.userId}`)
             .then(results => results.json())
             .then(json => {
-                console.log(json)
                 this.setState({
                     results:json.result
                 })
@@ -45,17 +41,17 @@ class SavedLog extends Component {
         let resultsMap = this.state.results.map(x => {
             return(
                 <li className = 'saved-container'>
-                    <Heading primary className = 'school-title' size = {1}><u>{x.schoolName}</u></Heading>
-                    <Heading size = {3}>One Year Total: ${x.yearTotal.toLocaleString()}</Heading>
-                    <Heading size = {3}>Four Year Total: ${x.fourYearTotal.toLocaleString()}</Heading>
+                    <h1 primary className = 'school-title' size = {1}><u>{x.schoolName}</u></h1>
+                    <h3 size = {3}>One Year Total: ${x.yearTotal.toLocaleString()}</h3>
+                    <h3 size = {3}>Four Year Total: ${x.fourYearTotal.toLocaleString()}</h3>
                     <div className = 'saved-big-flex'>
-                        <Heading size = {4}>Tuition: ${x.tuitionTotal.toLocaleString()}</Heading>
+                        <h3 size = {4}>Tuition: ${x.tuitionTotal.toLocaleString()}</h3>
                     </div>
                     <div className = 'saved-big-flex'>
-                        <Heading size = {4}>Housing: ${x.roomingTotal.toLocaleString()}</Heading>
+                        <h3 size = {4}>Housing: ${x.roomingTotal.toLocaleString()}</h3>
                     </div>
                 <div className = 'saved-big-flex'>
-                    <Heading size = {4}>School Equipment: ${(x.textbookTotal + x.laptopTotal + x.carTotal).toLocaleString()}</Heading>
+                    <h3 size = {4}>School Equipment: ${(x.textbookTotal + x.laptopTotal + x.carTotal).toLocaleString()}</h3>
                 <div className = 'saved-flex'> 
                     <p>Textbooks: ${x.textbookTotal.toLocaleString()}</p>
                     <p>Laptop: ${x.laptopTotal.toLocaleString()}</p>
@@ -63,7 +59,7 @@ class SavedLog extends Component {
                 </div>
                 </div>
                 <div className = 'saved-big-flex'>
-                    <Heading size = {4}>Monthly Costs: ${(x.foodTotal + x.restaurantTotal + x.phoneTotal + x.internetTotal + x.healthTotal + x.carMaintTotal).toLocaleString()}</Heading>
+                    <h3 size = {4}>Monthly Costs: ${(x.foodTotal + x.restaurantTotal + x.phoneTotal + x.internetTotal + x.healthTotal + x.carMaintTotal).toLocaleString()}</h3>
                 <div className = 'saved-flex'> 
                     <p>Groceries: ${x.foodTotal.toLocaleString()}</p>
                     <p>Restaurant: ${x.restaurantTotal.toLocaleString()}</p>
@@ -74,7 +70,7 @@ class SavedLog extends Component {
                 </div>
                 </div>
                 <div className = 'saved-big-flex'>
-                    <Heading size = {4}>Subscriptions: ${(x.spotifyTotal + x.amazonPrimeTotal + x.netflixTotal).toLocaleString()}</Heading>
+                    <h3 size = {4}>Subscriptions: ${(x.spotifyTotal + x.amazonPrimeTotal + x.netflixTotal).toLocaleString()}</h3>
                 <div className = 'saved-flex'> 
                     <p>Music: ${x.spotifyTotal.toLocaleString()}</p>
                     <p>Amazon Prime: ${x.amazonPrimeTotal.toLocaleString()}</p>
@@ -82,7 +78,7 @@ class SavedLog extends Component {
                 </div>
                 </div>
                 <div className = 'saved-big-flex'>
-                    <Heading size = {4}>Recreational Costs: ${(x.drinkTotal + x.alcoholTotal + x.clubTotal + x.clothingTotal + x.videoTotal + x.customTotal).toLocaleString()}</Heading>
+                    <h3 size = {4}>Recreational Costs: ${(x.drinkTotal + x.alcoholTotal + x.clubTotal + x.clothingTotal + x.videoTotal + x.customTotal).toLocaleString()}</h3>
                 <div className = 'saved-flex'> 
                     <p>Drinks & Snacks: ${x.drinkTotal.toLocaleString()}</p>
                     <p>Parties: ${x.alcoholTotal.toLocaleString()}</p>
@@ -100,7 +96,7 @@ class SavedLog extends Component {
         })
         return(
             <div className = 'big-saved-div'>
-                <Heading className = 'saved-header'>{this.props.userName}, here are the college estimates you've added. </Heading>
+                <h1 className = 'saved-header'>{this.props.userName}, here are the college estimates you've added. </h1>
                 <ul>
                     {resultsMap}
                 </ul>

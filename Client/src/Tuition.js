@@ -29,7 +29,6 @@ class Tuition extends Component {
         let apiKey = "S0RreVIMaoUJRJiIb9vLSTqiouUFP0KwjX5OCdwa"
         let stateStatus = this.props.stateStatus
         let URL = `${baseUrl}id=${this.props.schoolId}&api_key=${apiKey}&&_fields=latest.cost.tuition.${stateStatus}`
-        console.log(URL)
         fetch(URL)
         .then(response => response.json())
         .then(results => {
@@ -55,7 +54,6 @@ class Tuition extends Component {
         let apiKey = "S0RreVIMaoUJRJiIb9vLSTqiouUFP0KwjX5OCdwa"
         let schoolType = this.props.schoolType
         let URL = `${baseUrl}id=${this.props.schoolId}&api_key=${apiKey}&&_fields=latest.cost.net_price.${schoolType}.by_income_level.${tuitionValue},school.city`
-        console.log(URL)
         fetch(URL)
         .then(response => response.json())
         .then(results => {

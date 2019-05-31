@@ -25,7 +25,6 @@ class Search extends Component {
         let apiKey = "S0RreVIMaoUJRJiIb9vLSTqiouUFP0KwjX5OCdwa"
         let perPage = "&per_page=18"
         let URL = `${baseUrl}school.name=${e.target.value}${perPage}&api_key=${apiKey}&&_fields=latest.student.size,school.name,latest.cost.tuition.out_of_state,id,school.ownership`
-        console.log(URL)
         fetch(URL)
         .then(response => response.json())
         .then(response => this.setState({

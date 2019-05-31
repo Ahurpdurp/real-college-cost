@@ -13,7 +13,6 @@ class Home extends Component{
 
     constructor(props){
         super(props)
-        console.log(window.FB)
         this.state = {
             isLoggedIn: false,
             firstName: '',
@@ -29,53 +28,23 @@ class Home extends Component{
     }
 
     componentDidMount(){
-        // var accessToken = ''
-        // window.FB.getLoginStatus(function(response) {
-        //     console.log(response)
-        //     if (response.status === 'connected') {
-        //         accessToken = response.authResponse.accessToken
-        //         window.FB.api('/me?fields=first_name,last_name,email', {fields: '' }, {  access_token : accessToken }, function(response) {
-        //             console.log(response.first_name);
-        //             console.log(response.id)
-        //             this.setState({
-        //                 firstName:response.first_name,
-        //                 userId:response.id
-        //             })
-        //         })
-        //     }
-        // });
     }
 
     onFacebookLogin = () => {
         window.FB.login(function(response) {
             if (response.status === 'connected') {
-             console.log(response)
-             console.log('hehe')
             let accessToken = response.authResponse.accessToken
             window.FB.api('/me?fields=first_name,last_name,email', {fields: '' }, {  access_token : accessToken }, function(response) {
-                console.log(response.first_name);
                 this.props.onAddUsername(response.first_name, response.id)
             }.bind(this))
             } else {
               // The person is not logged into this app or we are unable to tell. 
             }
           }.bind(this));
-
-    //     console.log('test')
-    //     if (loginStatus === true) {
-    //         console.log(resultObject)
-    //         console.log('test')
-    //       this.setState({
-    //         isLoggedIn: true
-    //       });
-    //     } else {
-    //       alert('Facebook login error');
-    //     }
       }
       
     onFacebookLogout = () => {
         window.FB.logout(function(response) {
-            console.log(response)
           });
           this.setState({
               isLoggedIn: false
@@ -98,19 +67,6 @@ class Home extends Component{
                 </Container>
             </Hero.Body>
         </Hero>
-        {/* {this.props.userName === "" ? 
-        <div>
-            <Heading subtitle>
-                Log in through one of the three options below to save your results!
-            </Heading>
-            <div className = 'login-icon-container'>
-                <img onClick = {(this.onFacebookLogin)} alt = 'facebook-login-icon' src = 'https://image.flaticon.com/icons/svg/733/733547.svg'/>
-                <img alt = 'google-plus-login' src = 'https://image.flaticon.com/icons/svg/174/174851.svg'/>
-                <img alt = 'twitter-login-icon' src = 'https://image.flaticon.com/icons/svg/174/174876.svg'/>
-            </div>
-        </div>
-            : <Heading subtitle>Welcome, {this.props.userName}</Heading>
-        } */}
         <Content className = 'description' >
             <p>
                 When thinking about the cost of college, tuition isn't the whole picture (unfortunately). This website is intended to 
@@ -148,7 +104,6 @@ class Home extends Component{
             GET STARTED →
          </Button> 
         </div>
-      
             </div>
         )
     }

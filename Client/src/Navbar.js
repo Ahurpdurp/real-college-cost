@@ -8,7 +8,6 @@ import Popup from 'reactjs-popup'
 class TopNavbar extends Component{
     constructor(props){
         super(props)
-        console.log(window.FB)
         this.state = {
             firstName: '',
             userId:null
@@ -19,7 +18,6 @@ class TopNavbar extends Component{
             if (response.status === 'connected') {
             let accessToken = response.authResponse.accessToken
             window.FB.api('/me?fields=first_name,last_name,email', {fields: '' }, {  access_token : accessToken }, function(response) {
-                console.log(response.id);
                 this.props.onAddUsername(response.first_name, response.id)
             }.bind(this))
             } else {
@@ -30,14 +28,12 @@ class TopNavbar extends Component{
 
     onFacebookLogout = () => {
         window.FB.logout(function(response) {
-            console.log(response)
             this.props.onAddUsername('',null)
           }.bind(this))
     }
 
     routeRedirect = (path) => {
         if(this.props.location === '/'){
-            console.log('test')
         }
         this.props.history.push(path)
     }
