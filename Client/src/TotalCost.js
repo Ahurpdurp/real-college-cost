@@ -35,9 +35,8 @@ class TotalCost extends Component{
     }
 
     onHomeScreenRedirect = () => {
+        this.props.onSearchAgain()
         this.props.history.push('/main');
-        window.location.reload();
-
     }
 
     handleSaveResult = (fourYearTotal) => {
@@ -227,7 +226,7 @@ class TotalCost extends Component{
                     <h1>So without further ado, your grand total is....</h1>
                 </div>
                 <Heading className = 'college-total'><b>${fourYearCompleteTotal.toLocaleString()}</b></Heading>
-                <Heading className = 'life-after' subtitle><a href = '#'>What's your life after college looking like?</a></Heading>
+                <Heading className = 'life-after' subtitle><a rel="noopener noreferrer" target = "_blank" href = '/main/info' >So Now What?</a></Heading>
                 <div className = 'search-again-button-container'>
                 {!this.props.userId ? <Button className = 'saved-button'>Log In To Save</Button>   
                 :
@@ -270,4 +269,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(TotalCost)
+const mapDispatchToProps = (dispatch) => {
+    return {
+      onSearchAgain: () => dispatch({type: 'SEARCH_AGAIN'})
+    }
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(TotalCost)

@@ -16,6 +16,8 @@ import Faq from './Faq.js'
 import Home from './Home.js'
 import TopNavbar from './Navbar.js'
 import SavedLog from './SavedLog.js'
+import InfoPage from './InfoPage.js'
+
 class Main extends Component{
     
     onLeaveCheck = () => {
@@ -41,7 +43,8 @@ class Main extends Component{
                     <Route exact path = '/main/7' component = {Misc} />
                     <Route exact path = '/main/total' component = {TotalCost} />
                     <Route path = '/main/faq' component={Faq} />               
-                    <Route path = '/main/saved' component = {SavedLog} />         
+                    <Route path = '/main/saved' component = {SavedLog} /> 
+                    <Route path = '/main/info' component = {InfoPage} />       
                     </div>
                 </Switch>   
             </BrowserRouter>   

@@ -104,7 +104,9 @@ const reducer = (state = initialState, action) => {
             }
         case 'SEARCH_AGAIN':
             return{
-                ...initialState
+                ...initialState,
+                userName:state.userName,
+                userId:state.userId
             }
         default:
             return{

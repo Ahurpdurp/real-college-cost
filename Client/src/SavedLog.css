@@ -1,12 +1,18 @@
 .saved-header {
-    padding-top:2em;
+    background-color:rgb(180, 255, 217);
+    padding:1em;
+    width:80%;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 20px;
 }
 
 ul {
     list-style-type: none;
 }
 
-.saved-container li {
+.saved-container{
     background-color:rgb(255, 255, 255);
     width:80%;
     margin-left:auto;
@@ -29,7 +35,7 @@ ul {
 
 .saved-flex {
     display:grid;
-    grid-template-columns:30% 30% 30%;
+    grid-template-columns:35% 35% 35%;
     justify-content: center;
 }
 
@@ -39,7 +45,7 @@ ul {
 }
 
 .saved-big-flex {
-    background-color:rgb(211, 214, 255);
+    background-color:rgb(234, 235, 255);
     border-radius:25px;
     margin:3em;
     padding:1em;
@@ -53,4 +59,30 @@ ul {
 .remove-entry-container button {
     background-color:rgb(219, 68, 68);
     border-radius:10px;
+}
+
+.big-saved-div {
+    padding:1em;
+}
+
+@media screen and (max-width: 750px) {
+    .big-saved-div{
+        padding:0em;
+        padding-top:1em;
+    }
+    .saved-container{
+        width:95%;
+        margin-left:0;
+        margin-right:0;
+    }
+    .saved-flex {
+        display:flex;
+        flex-direction: column;
+        width:100%;
+    }
+
+    .saved-flex p {
+        margin-left:.5em;
+        margin-right:.5em;
+    }
 }

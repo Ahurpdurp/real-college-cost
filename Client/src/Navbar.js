@@ -47,7 +47,6 @@ class TopNavbar extends Component{
             <div>
             <div className = 'nav-container'>
                 <Button onClick = {() => this.routeRedirect('/')}>Home</Button>
-                <Button onClick = {() => this.routeRedirect('/main/faq')}>FAQ</Button>
                 {this.props.userId ? <Button onClick = {() => this.routeRedirect('/main/saved')}>My Colleges</Button> : null}
                 {this.props.userId ? <Button onClick = {this.onFacebookLogout}>Logout</Button> :<Popup trigger = {<Button>Login</Button>}>
                     <div>
@@ -59,6 +58,7 @@ class TopNavbar extends Component{
                     </div>  
                     </div>
                     </Popup>}
+                    <Button onClick = {() => this.routeRedirect('/main/faq')}>FAQ</Button>
             </div>
                 {!this.props.userId ? <h5>Log in to save your results!</h5> : <h5>Logged in as {this.props.userName}</h5> }
             </div>

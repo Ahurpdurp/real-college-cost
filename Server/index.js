@@ -65,6 +65,9 @@ app.post('/remove-entry', (req,res) => {
       id:postId
     }
   })
+  .then(() => {
+    res.send('successfully deleted')
+  })
 })
 
 app.listen(8080, () => {

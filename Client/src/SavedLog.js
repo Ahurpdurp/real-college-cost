@@ -29,9 +29,14 @@ class SavedLog extends Component {
         axios.post('http://localhost:8080/remove-entry',{
             postId:postId
           })
-        .then(() => {
-            this.setState({
-                state:this.state
+        .then((res) => {
+            fetch(`http://localhost:8080/view-colleges/${this.props.userId}`)
+            .then(results => results.json())
+            .then(json => {
+                console.log(json)
+                this.setState({
+                    results:json.result
+                })
             })
         })
     }
@@ -79,12 +84,12 @@ class SavedLog extends Component {
                 <div className = 'saved-big-flex'>
                     <Heading size = {4}>Recreational Costs: ${(x.drinkTotal + x.alcoholTotal + x.clubTotal + x.clothingTotal + x.videoTotal + x.customTotal).toLocaleString()}</Heading>
                 <div className = 'saved-flex'> 
-                    <p>Drinks/Snacks: ${x.drinkTotal.toLocaleString()}</p>
-                    <p>Alcohol/Partying: ${x.alcoholTotal.toLocaleString()}</p>
+                    <p>Drinks & Snacks: ${x.drinkTotal.toLocaleString()}</p>
+                    <p>Parties: ${x.alcoholTotal.toLocaleString()}</p>
                     <p>School Clubs: ${x.clubTotal.toLocaleString()}</p>
-                    <p>Clothing/Laundry: ${x.clothingTotal.toLocaleString()}</p>
-                    <p>Videogames/Other Media: ${x.videoTotal.toLocaleString()}</p>
-                    <p>Miscellaneous: ${x.customTotal.toLocaleString()}</p>
+                    <p>Clothing: ${x.clothingTotal.toLocaleString()}</p>
+                    <p>Video Games & Movies: ${x.videoTotal.toLocaleString()}</p>
+                    <p>Other: ${x.customTotal.toLocaleString()}</p>
                 </div>
                 </div>
                 <div className = 'remove-entry-container'>
@@ -94,7 +99,7 @@ class SavedLog extends Component {
             )
         })
         return(
-            <div>
+            <div className = 'big-saved-div'>
                 <Heading className = 'saved-header'>{this.props.userName}, here are the college estimates you've added. </Heading>
                 <ul>
                     {resultsMap}
