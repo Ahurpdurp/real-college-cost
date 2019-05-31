@@ -5,7 +5,6 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import './Search.css'
 import TitleHeader from './Header.js'
 import { connect } from 'react-redux'
-import Button from 'react-bulma-components/lib/components/button';
 import "./SearchRouter.css"
 class Search extends Component {
     constructor(){

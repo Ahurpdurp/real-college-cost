@@ -45,6 +45,7 @@ app.get('/test/:id', (req,res) => {
 
 app.get('/view-colleges/:userId' , (req,res) => {
   let userId = req.params.userId
+  console.log(userId)
   models.SavedResults.findAll({
     where: {
         userId: userId
@@ -52,7 +53,17 @@ app.get('/view-colleges/:userId' , (req,res) => {
     order: [['createdAt', 'DESC']]
   })
   .then(result => {
+    console.log(result)
     res.json({result:result})
+  })
+})
+
+app.post('/remove-entry', (req,res) => {
+  let postId = req.body.postId
+  models.SavedResults.destroy({
+    where:{
+      id:postId
+    }
   })
 })
 
