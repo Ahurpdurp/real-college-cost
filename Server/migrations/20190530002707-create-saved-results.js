@@ -14,6 +14,9 @@ module.exports = {
       userName: {
         type: Sequelize.STRING
       },
+      schoolName: {
+        type: Sequelize.STRING
+      },
       tuitionTotal: {
         type: Sequelize.INTEGER
       },

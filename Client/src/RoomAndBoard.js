@@ -64,21 +64,9 @@ class RoomAndBoard extends Component {
         })
     }
 
-    handleHomeRedirect = () => {
-        if(window.confirm("Go back to the home page? All progress will be lost.")){
-            this.props.history.push('/')
-            window.location.reload();
-        }
-    }
-
     render(){
         return(
             <div>
-                <div className = 'faq-button'>
-                    <Button onClick = {this.handleHomeRedirect}>
-                        Home
-                    </Button> 
-                </div>
                 <TitleHeader />
                 <Image src = 'https://www.shareicon.net/data/128x128/2016/09/26/835174_buildings_512x512.png'/>
                 <Hero className = 'housing-hero' color = 'white' >

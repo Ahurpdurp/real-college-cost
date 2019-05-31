@@ -12,6 +12,7 @@ app.post('/add-college', (req,res) => {
   models.SavedResults.create({
     userId: req.body.userId,
     userName: req.body.userName,
+    schoolName: req.body.schoolName,
     tuitionTotal: req.body.tuitionTotal,
     roomingTotal: req.body.roomingTotal,
     textbookTotal: req.body.textbookTotal,
@@ -31,15 +32,24 @@ app.post('/add-college', (req,res) => {
     clubTotal: req.body.clubTotal,
     clothingTotal: req.body.clothingTotal,
     videoTotal: req.body.videoTotal,
-    customTotal: req.body.customTotal
+    customTotal: req.body.customTotal,
+    yearTotal:req.body.yearTotal,
+    fourYearTotal:req.body.fourYearTotal
   })
 })
 
-app.get('/view-colleges' , (req,res) => {
+app.get('/test/:id', (req,res) => {
+  let id = req.params.id
+  res.json({test:id})
+})
+
+app.get('/view-colleges/:userId' , (req,res) => {
+  let userId = req.params.userId
   models.SavedResults.findAll({
     where: {
-        userId: '10219865044842271'
-    }
+        userId: userId
+    },
+    order: [['createdAt', 'DESC']]
   })
   .then(result => {
     res.json({result:result})

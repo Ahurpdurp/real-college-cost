@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const SavedResults = sequelize.define('SavedResults', {
     userId: DataTypes.STRING,
     userName: DataTypes.STRING,
+    schoolName: DataTypes.STRING,
     tuitionTotal: DataTypes.INTEGER,
     roomingTotal: DataTypes.INTEGER,
     textbookTotal: DataTypes.INTEGER,
@@ -22,7 +23,9 @@ module.exports = (sequelize, DataTypes) => {
     clubTotal: DataTypes.INTEGER,
     clothingTotal: DataTypes.INTEGER,
     videoTotal: DataTypes.INTEGER,
-    customTotal: DataTypes.INTEGER
+    customTotal: DataTypes.INTEGER,
+    yearTotal: DataTypes.INTEGER,
+    fourYearTotal: DataTypes.FLOAT
   }, {});
   SavedResults.associate = function(models) {
     // associations can be defined here

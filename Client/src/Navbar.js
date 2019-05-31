@@ -17,11 +17,9 @@ class TopNavbar extends Component{
     onFacebookLogin = () => {
         window.FB.login(function(response) {
             if (response.status === 'connected') {
-             console.log(response)
-             console.log('hehe')
             let accessToken = response.authResponse.accessToken
             window.FB.api('/me?fields=first_name,last_name,email', {fields: '' }, {  access_token : accessToken }, function(response) {
-                console.log(response.first_name);
+                console.log(response.id);
                 this.props.onAddUsername(response.first_name, response.id)
             }.bind(this))
             } else {
@@ -50,7 +48,7 @@ class TopNavbar extends Component{
             <div className = 'nav-container'>
                 <Button onClick = {() => this.routeRedirect('/')}>Home</Button>
                 <Button onClick = {() => this.routeRedirect('/main/faq')}>FAQ</Button>
-                {this.props.userId ? <Button>Saved Entries</Button> : null}
+                {this.props.userId ? <Button onClick = {() => this.routeRedirect('/main/saved')}>My Colleges</Button> : null}
                 {this.props.userId ? <Button onClick = {this.onFacebookLogout}>Logout</Button> :<Popup trigger = {<Button>Login</Button>}>
                     <div>
                         <h5>Click on one of the three icons below to log in!</h5>

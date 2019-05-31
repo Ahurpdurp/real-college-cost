@@ -16,7 +16,7 @@ class TotalCost extends Component{
         this.state = {
             tuitionTotalGraph:null,
             roomingTotalGraph:null,
-            isSaved:false
+            isSaved:false,
         }
     }
     componentDidMount(){
@@ -40,10 +40,11 @@ class TotalCost extends Component{
 
     }
 
-    handleSaveResult = () => {
+    handleSaveResult = (fourYearTotal) => {
         axios.post('http://localhost:8080/add-college',{
             userName:this.props.userName,
             userId:this.props.userId,
+            schoolName:this.props.schoolName,
             tuitionTotal:this.props.tuitionTotal,
             roomingTotal:this.props.roomingTotal,
             textbookTotal:this.props.textbookTotal,
@@ -63,7 +64,9 @@ class TotalCost extends Component{
             clubTotal:this.props.clubTotal,
             clothingTotal:this.props.clothingTotal,
             videoTotal:this.props.videoTotal,
-            customTotal:this.props.customTotal
+            customTotal:this.props.customTotal,
+            yearTotal:this.props.total,
+            fourYearTotal:fourYearTotal
           })
         this.setState({
             isSaved:true
@@ -221,7 +224,7 @@ class TotalCost extends Component{
                     <b>${fourYearNonTuition.toLocaleString()}</b>
                 </Heading>
                 <div className = 'total-total'>
-                    <h1>So without further ado, your grand grand total is....</h1>
+                    <h1>So without further ado, your grand total is....</h1>
                 </div>
                 <Heading className = 'college-total'><b>${fourYearCompleteTotal.toLocaleString()}</b></Heading>
                 <Heading className = 'life-after' subtitle><a href = '#'>What's your life after college looking like?</a></Heading>
@@ -229,7 +232,7 @@ class TotalCost extends Component{
                 {!this.props.userId ? <Button className = 'saved-button'>Log In To Save</Button>   
                 :
                 this.state.isSaved ? <Button className = 'saved-button'>Saved!</Button>
-                : <Button className = 'save-button' inverted = {'true'} onClick = {this.handleSaveResult}>Save This Result</Button>
+                : <Button className = 'save-button' inverted = {'true'} onClick = {() => this.handleSaveResult(fourYearCompleteTotal)}>Save This Result</Button>
                 }
                 <Button className = 'search-again-button' onClick = {this.onHomeScreenRedirect}>Search Again!</Button>
                 </div>
