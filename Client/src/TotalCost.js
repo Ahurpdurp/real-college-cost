@@ -72,6 +72,12 @@ class TotalCost extends Component{
         })
     }
 
+
+    handleInfoRedirect = () => {
+        if (window.confirm('Make sure you saved your result!')) {
+            this.props.history.push('/main/info')
+        }
+    }
     render(){
 
         let tuitionPercentage = (100 * this.props.tuitionTotal/this.props.total).toFixed(0)
@@ -226,7 +232,7 @@ class TotalCost extends Component{
                     <h1>So without further ado, your grand total is....</h1>
                 </div>
                 <Heading className = 'college-total'><b>${fourYearCompleteTotal.toLocaleString()}</b></Heading>
-                <Heading className = 'life-after' subtitle><a rel="noopener noreferrer" target = "_blank" href = '/main/info' >So Now What?</a></Heading>
+                <p className = 'additional-info'><a  onClick = {this.handleInfoRedirect}><u>So Now What?</u></a></p>
                 <div className = 'search-again-button-container'>
                 {!this.props.userId ? <Button className = 'saved-button'>Log In To Save</Button>   
                 :

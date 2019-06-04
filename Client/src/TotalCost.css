@@ -154,3 +154,11 @@ a { color: inherit; }
         width:80%;
     }
 }
+
+.additional-info{
+    text-align: center;
+}
+
+.additional-info:hover{
+    cursor: pointer;
+}

@@ -38,10 +38,16 @@ class TopNavbar extends Component{
         this.props.history.push(path)
     }
 
+    onSignIn = (googleUser) => {
+        var profile = googleUser.getBasicProfile()
+        console.log(profile.getId())
+    }
+
     render(){
         return(
             <div>
             <div className = 'nav-container'>
+            <div class = 'g-signin2' data-onsuccess = {this.onSignIn}></div>
                 <Button onClick = {() => this.routeRedirect('/')}>Home</Button>
                 {this.props.userId ? <Button onClick = {() => this.routeRedirect('/main/saved')}>My Colleges</Button> : null}
                 {this.props.userId ? <Button onClick = {this.onFacebookLogout}>Logout</Button> :<Popup trigger = {<Button>Login</Button>}>
