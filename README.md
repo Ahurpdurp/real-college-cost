@@ -16,7 +16,7 @@ Home Page:
 
 Search for your college (this uses a college api of over 7,200 colleges). 
 
-![alt text](https://raw.githubusercontent.com/Ahurpdurp/real-college-cost/master/Client/src/images/search.PNG)
+![alt text](https://raw.githubusercontent.com/Ahurpdurp/real-college-cost/master/Client/src/images/search.png)
 
 The next step is to calculate the tuition based off of the parents' income (since this determines financial aid). 
 An estimate is given based off the most recent data, which the student is also welcome to change. 
@@ -40,7 +40,7 @@ Next, we're going to calculate monthly bills, such as phone bills, food, stuff l
 
 ![alt text](https://raw.githubusercontent.com/Ahurpdurp/real-college-cost/master/Client/src/images/Final6.PNG)
 
-Next, we're going to think about subscriptions that studnets usually use.
+Next, we're going to think about subscriptions that students usually use.
 
 ![alt text](https://raw.githubusercontent.com/Ahurpdurp/real-college-cost/master/Client/src/images/Final7.PNG)
 
